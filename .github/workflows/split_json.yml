@@ -1,0 +1,30 @@
+name: Split JSON
+
+on:
+  push:
+    paths:
+      - "tokenss.json"
+  workflow_dispatch:
+
+jobs:
+  split-json:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: "3.x"
+
+      - name: Run Python script
+        run: |
+          python split_json.py
+
+      - name: Upload output files
+        uses: actions/upload-artifact@v3
+        with:
+          name: split-json-output
+          path: output_json/
