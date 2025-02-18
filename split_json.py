@@ -28,5 +28,5 @@ def split_json(input_file):
     print("Splitting complete. JSON files saved in the 'output_json' folder.")
 
 if __name__ == "__main__":
-    input_file = "tokenss.json"  # Ensure the file is in the same directory
+    input_file = "tokens.json"  # Ensure the file is in the same directory
     split_json(input_file)
