@@ -3,7 +3,7 @@ name: Split JSON
 on:
   push:
     paths:
-      - "tokens.json"
+      - "tokenss.json"
   workflow_dispatch:
 
 jobs:
@@ -23,8 +23,13 @@ jobs:
         run: |
           python split_json.py
 
-      - name: Upload output files
-        uses: actions/upload-artifact@v4
-        with:
-          name: split-json-output
-          path: output_json/
+      - name: Configure Git
+        run: |
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "github-actions[bot]@users.noreply.github.com"
+
+      - name: Commit and Push Changes
+        run: |
+          git add output_json/
+          git commit -m "Add split JSON files"
+          git push origin main
