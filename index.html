@@ -6,9 +6,15 @@
     <title>Token List</title>
     <style>
         body { font-family: Arial, sans-serif; padding: 20px; }
-        .accordion { background: #f4f4f4; cursor: pointer; padding: 10px; width: 100%; border: none; text-align: left; outline: none; font-size: 18px; transition: 0.4s; }
+        .accordion { background: #f4f4f4; cursor: pointer; padding: 10px; width: 100%; border: none; text-align: left; font-size: 18px; transition: 0.4s; margin-top: 5px; }
         .active, .accordion:hover { background-color: #ccc; }
-        .panel { padding: 10px; display: none; overflow: hidden; background: #fff; border: 1px solid #ddd; border-top: none; }
+        .panel { display: none; background: #fff; border: 1px solid #ddd; padding: 10px; }
+        .tab { display: flex; gap: 10px; margin-bottom: 10px; }
+        .tab button { padding: 8px 12px; cursor: pointer; border: 1px solid #ddd; background: #eee; }
+        .tab button.active { background: #ccc; }
+        .tab-content { display: none; padding: 10px; border: 1px solid #ddd; background: #f9f9f9; }
+        .copy-btn { float: right; padding: 5px 10px; cursor: pointer; border: none; background: #007bff; color: white; }
+        pre { white-space: pre-wrap; word-wrap: break-word; }
     </style>
     <script>
         async function loadTokens() {
@@ -20,11 +26,35 @@
                     const response = await fetch(file);
                     if (!response.ok) throw new Error(`Failed to load ${file}`);
                     const data = await response.json();
+                    const formattedName = file.replace("output_json/", "").replace(".json", "").toUpperCase();
+
+                    let tokensHTML = "<ul>";
+                    function extractTokens(obj, prefix = "") {
+                        for (const key in obj) {
+                            if (typeof obj[key] === "object" && !obj[key].value) {
+                                extractTokens(obj[key], prefix + key + "--");
+                            } else if (obj[key].value) {
+                                tokensHTML += `<li><strong>${prefix + key}</strong>: ${obj[key].value}</li>`;
+                            }
+                        }
+                    }
+                    extractTokens(data);
+                    tokensHTML += "</ul>";
 
                     const section = document.createElement("div");
                     section.innerHTML = `
-                        <button class="accordion">${file.replace("output_json/", "").replace(".json", "").toUpperCase()}</button>
-                        <div class="panel"><pre>${JSON.stringify(data, null, 2)}</pre></div>
+                        <button class="accordion">${formattedName}</button>
+                        <div class="panel">
+                            <div class="tab">
+                                <button class="tab-btn active" onclick="switchTab(event, 'tokens-${formattedName}')">Token List</button>
+                                <button class="tab-btn" onclick="switchTab(event, 'json-${formattedName}')">Raw JSON</button>
+                            </div>
+                            <div id="tokens-${formattedName}" class="tab-content" style="display: block;">${tokensHTML}</div>
+                            <div id="json-${formattedName}" class="tab-content">
+                                <button class="copy-btn" onclick="copyJSON('${formattedName}')">Copy JSON</button>
+                                <pre id="json-data-${formattedName}">${JSON.stringify(data, null, 2)}</pre>
+                            </div>
+                        </div>
                     `;
                     outputDiv.appendChild(section);
                 } catch (error) {
@@ -32,13 +62,27 @@
                 }
             }
 
-            // Add accordion functionality
             document.querySelectorAll(".accordion").forEach(button => {
                 button.addEventListener("click", function() {
                     this.classList.toggle("active");
                     const panel = this.nextElementSibling;
                     panel.style.display = panel.style.display === "block" ? "none" : "block";
                 });
+            });
+        }
+
+        function switchTab(event, tabId) {
+            const parent = event.target.closest(".panel");
+            parent.querySelectorAll(".tab-content").forEach(tab => tab.style.display = "none");
+            parent.querySelectorAll(".tab-btn").forEach(btn => btn.classList.remove("active"));
+            document.getElementById(tabId).style.display = "block";
+            event.target.classList.add("active");
+        }
+
+        function copyJSON(name) {
+            const text = document.getElementById(`json-data-${name}`).innerText;
+            navigator.clipboard.writeText(text).then(() => {
+                alert("JSON copied to clipboard!");
             });
         }
 
