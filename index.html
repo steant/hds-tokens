@@ -4,9 +4,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Token List</title>
+    <style>
+        body { font-family: Arial, sans-serif; padding: 20px; }
+        pre { background: #f4f4f4; padding: 10px; border-radius: 5px; overflow-x: auto; }
+    </style>
     <script>
         async function loadTokens() {
-            const files = ["primitives.json", "semantics.json", "light.json", "dark.json"];
+            const files = ["output_json/primitives.json", "output_json/semantics.json", "output_json/light.json", "output_json/dark.json"];
             const outputDiv = document.getElementById("tokens");
 
             for (const file of files) {
@@ -16,7 +20,7 @@
                     const data = await response.json();
 
                     const section = document.createElement("div");
-                    section.innerHTML = `<h2>${file.replace(".json", "").toUpperCase()}</h2><pre>${JSON.stringify(data, null, 2)}</pre>`;
+                    section.innerHTML = `<h2>${file.replace("output_json/", "").replace(".json", "").toUpperCase()}</h2><pre>${JSON.stringify(data, null, 2)}</pre>`;
                     outputDiv.appendChild(section);
                 } catch (error) {
                     console.error(error);
