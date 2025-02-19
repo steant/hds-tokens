@@ -3,7 +3,7 @@ name: Split JSON
 on:
   push:
     paths:
-      - "tokens.json"
+      - "tokenss.json"
   workflow_dispatch:
 
 jobs:
@@ -13,15 +13,22 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.GH_PAT }}  # Use the GitHub token
 
       - name: Set up Python
         uses: actions/setup-python@v4
         with:
           python-version: "3.x"
 
+      - name: Create output folder
+        run: mkdir -p output_json
+
       - name: Run Python script
-        run: |
-          python split_json.py
+        run: python split_json.py
+
+      - name: Verify output
+        run: ls -la output_json/
 
       - name: Configure Git
         run: |
@@ -30,6 +37,6 @@ jobs:
 
       - name: Commit and Push Changes
         run: |
-          git add output_json/
-          git commit -m "Add split JSON files"
+          git add output_json || echo "No changes to commit"
+          git diff --staged --quiet || git commit -m "Add split JSON files"
           git push origin main
