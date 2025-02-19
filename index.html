@@ -6,7 +6,9 @@
     <title>Token List</title>
     <style>
         body { font-family: Arial, sans-serif; padding: 20px; }
-        pre { background: #f4f4f4; padding: 10px; border-radius: 5px; overflow-x: auto; }
+        .accordion { background: #f4f4f4; cursor: pointer; padding: 10px; width: 100%; border: none; text-align: left; outline: none; font-size: 18px; transition: 0.4s; }
+        .active, .accordion:hover { background-color: #ccc; }
+        .panel { padding: 10px; display: none; overflow: hidden; background: #fff; border: 1px solid #ddd; border-top: none; }
     </style>
     <script>
         async function loadTokens() {
@@ -20,12 +22,24 @@
                     const data = await response.json();
 
                     const section = document.createElement("div");
-                    section.innerHTML = `<h2>${file.replace("output_json/", "").replace(".json", "").toUpperCase()}</h2><pre>${JSON.stringify(data, null, 2)}</pre>`;
+                    section.innerHTML = `
+                        <button class="accordion">${file.replace("output_json/", "").replace(".json", "").toUpperCase()}</button>
+                        <div class="panel"><pre>${JSON.stringify(data, null, 2)}</pre></div>
+                    `;
                     outputDiv.appendChild(section);
                 } catch (error) {
                     console.error(error);
                 }
             }
+
+            // Add accordion functionality
+            document.querySelectorAll(".accordion").forEach(button => {
+                button.addEventListener("click", function() {
+                    this.classList.toggle("active");
+                    const panel = this.nextElementSibling;
+                    panel.style.display = panel.style.display === "block" ? "none" : "block";
+                });
+            });
         }
 
         document.addEventListener("DOMContentLoaded", loadTokens);
