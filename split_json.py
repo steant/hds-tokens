@@ -6,12 +6,12 @@ def split_json(input_file):
     with open(input_file, "r") as file:
         data = json.load(file)
 
-    # Extract the required sections
+    # Extract the required sections based on new keys
     sections = {
-        "primitives": data.get("primitives", {}),
-        "semantics": data.get("semantics", {}),
-        "light": data.get("light", {}),
-        "dark": data.get("dark", {})
+        "primitives": data.get("primitives/primitives", {}),
+        "semantics": data.get("semantics/semantics", {}),
+        "light": data.get("themes/light", {}),
+        "dark": data.get("themes/dark", {})
     }
 
     # Create an output directory
