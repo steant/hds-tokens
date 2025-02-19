@@ -15,6 +15,9 @@
         .tab-content { display: none; padding: 10px; border: 1px solid #ddd; background: #f9f9f9; }
         .copy-btn { float: right; padding: 5px 10px; cursor: pointer; border: none; background: #007bff; color: white; }
         pre { white-space: pre-wrap; word-wrap: break-word; }
+        .token-list { list-style: none; padding: 0; }
+        .token-list li { display: flex; align-items: center; margin-bottom: 5px; }
+        .color-circle { width: 15px; height: 15px; border-radius: 50%; display: inline-block; margin-right: 10px; border: 1px solid #000; }
     </style>
     <script>
         async function loadTokens() {
@@ -28,13 +31,18 @@
                     const data = await response.json();
                     const formattedName = file.replace("output_json/", "").replace(".json", "").toUpperCase();
 
-                    let tokensHTML = "<ul>";
+                    let tokensHTML = "<ul class='token-list'>";
                     function extractTokens(obj, prefix = "") {
                         for (const key in obj) {
                             if (typeof obj[key] === "object" && !obj[key].value) {
                                 extractTokens(obj[key], prefix + key + "--");
                             } else if (obj[key].value) {
-                                tokensHTML += `<li><strong>${prefix + key}</strong>: ${obj[key].value}</li>`;
+                                const value = obj[key].value;
+                                const isColor = obj[key].type === "color";
+                                tokensHTML += `<li>
+                                    ${isColor ? `<span class="color-circle" style="background-color: ${value};"></span>` : ""}
+                                    <strong>${prefix + key}</strong>: ${value}
+                                </li>`;
                             }
                         }
                     }
