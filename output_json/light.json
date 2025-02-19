@@ -1,1 +1,192 @@
-{}
+{
+  "hds-color": {
+    "text": {
+      "default": {
+        "value": "{global-color.base.1000}",
+        "type": "color"
+      },
+      "subtle": {
+        "value": "{global-color.neutral.800}",
+        "type": "color"
+      },
+      "minimal": {
+        "value": "{global-color.neutral.700}",
+        "type": "color"
+      },
+      "disabled": {
+        "value": "{global-color.neutral.600}",
+        "type": "color"
+      },
+      "link": {
+        "value": "{global-color.primary.700}",
+        "type": "color"
+      },
+      "link-active": {
+        "value": "{global-color.primary.800}",
+        "type": "color"
+      },
+      "link-hover": {
+        "value": "{global-color.primary.600}",
+        "type": "color"
+      },
+      "placeholder": {
+        "value": "{global-color.neutral.700}",
+        "type": "color"
+      },
+      "danger": {
+        "value": "{global-color.red.700}",
+        "type": "color"
+      },
+      "danger-subtle": {
+        "value": "{global-color.red.800}",
+        "type": "color"
+      },
+      "inverse": {
+        "value": "{global-color.base.0}",
+        "type": "color"
+      }
+    },
+    "bg": {
+      "default": {
+        "value": "{global-color.neutral.200}",
+        "type": "color"
+      },
+      "surface": {
+        "default": {
+          "value": "{global-color.base.0}",
+          "type": "color"
+        },
+        "raised": {
+          "value": "{global-color.neutral.100}",
+          "type": "color"
+        },
+        "secondary-default": {
+          "value": "{global-color.neutral.200}",
+          "type": "color"
+        },
+        "secondary-hover": {
+          "value": "{global-color.neutral.300}",
+          "type": "color"
+        },
+        "secondary-active": {
+          "value": "{global-color.neutral.400}",
+          "type": "color"
+        }
+      },
+      "fill": {
+        "brand": {
+          "default": {
+            "value": "{global-color.primary.400}",
+            "type": "color"
+          },
+          "hover": {
+            "value": "{global-color.primary.300}",
+            "type": "color"
+          },
+          "active": {
+            "value": "{global-color.primary.500}",
+            "type": "color"
+          }
+        },
+        "secondary": {
+          "default": {
+            "value": "{global-color.neutral.400}",
+            "type": "color"
+          },
+          "hover": {
+            "value": "{global-color.neutral.300}",
+            "type": "color"
+          },
+          "active": {
+            "value": "{global-color.neutral.500}",
+            "type": "color"
+          }
+        },
+        "danger": {
+          "default": {
+            "value": "{global-color.red.100}",
+            "type": "color"
+          },
+          "hover": {
+            "value": "{global-color.red.300}",
+            "type": "color"
+          },
+          "active": {
+            "value": "{global-color.red.500}",
+            "type": "color"
+          }
+        }
+      }
+    },
+    "input": {
+      "bg": {
+        "value": "{global-color.base.0}",
+        "type": "color"
+      },
+      "border": {
+        "value": "{global-color.neutral.500}",
+        "type": "color"
+      },
+      "border-hover": {
+        "value": "{global-color.neutral.600}",
+        "type": "color"
+      },
+      "border-active": {
+        "value": "{global-color.neutral.800}",
+        "type": "color"
+      }
+    },
+    "icon": {
+      "default": {
+        "value": "{global-color.base.1000}",
+        "type": "color"
+      },
+      "inverse": {
+        "value": "{global-color.base.0}",
+        "type": "color"
+      },
+      "subtle": {
+        "value": "{global-color.neutral.800}",
+        "type": "color"
+      },
+      "success": {
+        "value": "{global-color.primary.600}",
+        "type": "color"
+      },
+      "danger": {
+        "value": "{global-color.red.600}",
+        "type": "color"
+      },
+      "danger-subtle": {
+        "value": "{global-color.red.800}",
+        "type": "color"
+      },
+      "warning": {
+        "value": "{global-color.orange.500}",
+        "type": "color"
+      },
+      "information": {
+        "value": "{global-color.blue.500}",
+        "type": "color"
+      },
+      "brand": {
+        "value": "{global-color.primary.500}",
+        "type": "color"
+      }
+    }
+  },
+  "hds-shadow": {
+    "action-focus": {
+      "color": {
+        "value": "{global-color.base.1000}",
+        "type": "color"
+      }
+    }
+  },
+  "hds-border": {
+    "action": {
+      "value": "{global-color.neutral.500}",
+      "type": "color"
+    }
+  }
+}

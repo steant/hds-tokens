@@ -1,1 +1,192 @@
-{}
+{
+  "hds-color": {
+    "text": {
+      "default": {
+        "value": "{global-color.base.0}",
+        "type": "color"
+      },
+      "subtle": {
+        "value": "{global-color.neutral.300}",
+        "type": "color"
+      },
+      "minimal": {
+        "value": "{global-color.neutral.300}",
+        "type": "color"
+      },
+      "disabled": {
+        "value": "{global-color.neutral.400}",
+        "type": "color"
+      },
+      "link": {
+        "value": "{global-color.primary.300}",
+        "type": "color"
+      },
+      "link-active": {
+        "value": "{global-color.primary.600}",
+        "type": "color"
+      },
+      "link-hover": {
+        "value": "{global-color.primary.500}",
+        "type": "color"
+      },
+      "placeholder": {
+        "value": "{global-color.neutral.500}",
+        "type": "color"
+      },
+      "danger": {
+        "value": "#683b3b",
+        "type": "color"
+      },
+      "danger-subtle": {
+        "value": "#511111",
+        "type": "color"
+      },
+      "inverse": {
+        "value": "{global-color.base.0}",
+        "type": "color"
+      }
+    },
+    "bg": {
+      "default": {
+        "value": "{global-color.base.1000}",
+        "type": "color"
+      },
+      "surface": {
+        "default": {
+          "value": "{global-color.neutral.400}",
+          "type": "color"
+        },
+        "raised": {
+          "value": "{global-color.neutral.500}",
+          "type": "color"
+        },
+        "secondary-default": {
+          "value": "{global-color.neutral.600}",
+          "type": "color"
+        },
+        "secondary-hover": {
+          "value": "{global-color.neutral.700}",
+          "type": "color"
+        },
+        "secondary-active": {
+          "value": "{global-color.neutral.800}",
+          "type": "color"
+        }
+      },
+      "fill": {
+        "brand": {
+          "default": {
+            "value": "#ffffff",
+            "type": "color"
+          },
+          "hover": {
+            "value": "#ffffff",
+            "type": "color"
+          },
+          "active": {
+            "value": "#ffffff",
+            "type": "color"
+          }
+        },
+        "secondary": {
+          "default": {
+            "value": "#ffffff",
+            "type": "color"
+          },
+          "hover": {
+            "value": "#ffffff",
+            "type": "color"
+          },
+          "active": {
+            "value": "#ffffff",
+            "type": "color"
+          }
+        },
+        "danger": {
+          "default": {
+            "value": "#ffffff",
+            "type": "color"
+          },
+          "hover": {
+            "value": "#ffffff",
+            "type": "color"
+          },
+          "active": {
+            "value": "#ffffff",
+            "type": "color"
+          }
+        }
+      }
+    },
+    "input": {
+      "bg": {
+        "value": "{global-color.base.0}",
+        "type": "color"
+      },
+      "border": {
+        "value": "{global-color.neutral.500}",
+        "type": "color"
+      },
+      "border-hover": {
+        "value": "{global-color.neutral.600}",
+        "type": "color"
+      },
+      "border-active": {
+        "value": "{global-color.neutral.800}",
+        "type": "color"
+      }
+    },
+    "icon": {
+      "default": {
+        "value": "{global-color.base.0}",
+        "type": "color"
+      },
+      "inverse": {
+        "value": "{global-color.base.0}",
+        "type": "color"
+      },
+      "subtle": {
+        "value": "{global-color.neutral.300}",
+        "type": "color"
+      },
+      "success": {
+        "value": "{global-color.primary.300}",
+        "type": "color"
+      },
+      "danger": {
+        "value": "#ffffff",
+        "type": "color"
+      },
+      "danger-subtle": {
+        "value": "#ffffff",
+        "type": "color"
+      },
+      "warning": {
+        "value": "{global-color.primary.300}",
+        "type": "color"
+      },
+      "information": {
+        "value": "{global-color.primary.300}",
+        "type": "color"
+      },
+      "brand": {
+        "value": "{global-color.primary.300}",
+        "type": "color"
+      }
+    }
+  },
+  "hds-shadow": {
+    "action-focus": {
+      "color": {
+        "value": "#ffffff",
+        "type": "color"
+      }
+    }
+  },
+  "hds-border": {
+    "action": {
+      "value": "#ffffff",
+      "type": "color"
+    }
+  }
+}
