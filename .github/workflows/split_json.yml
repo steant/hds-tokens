@@ -3,7 +3,7 @@ name: Split JSON
 on:
   push:
     paths:
-      - "tokenss.json"
+      - "tokens.json"
   workflow_dispatch:
 
 jobs:
