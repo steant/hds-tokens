@@ -3,48 +3,80 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Token List</title>
+  <title>Token List - Nested Tables</title>
   <style>
     body {
       font-family: Arial, sans-serif;
       padding: 20px;
     }
     .accordion {
-      background: #f4f4f4; cursor: pointer;
-      padding: 10px; width: 100%; border: none;
-      text-align: left; font-size: 18px; margin-top: 5px;
+      background: #f4f4f4; 
+      cursor: pointer;
+      padding: 10px; 
+      width: 100%; 
+      border: none;
+      text-align: left; 
+      font-size: 18px; 
+      margin-top: 5px;
     }
-    .active, .accordion:hover { background-color: #ccc; }
+    .active, .accordion:hover { 
+      background-color: #ccc; 
+    }
     .panel {
-      display: none; background: #fff;
-      border: 1px solid #ddd; padding: 10px;
+      display: none; 
+      background: #fff;
+      border: 1px solid #ddd; 
+      padding: 10px;
     }
     .tab {
-      display: flex; gap: 10px; margin-bottom: 10px;
+      display: flex; 
+      gap: 10px; 
+      margin-bottom: 10px;
     }
     .tab button {
-      padding: 8px 12px; cursor: pointer;
-      border: 1px solid #ddd; background: #eee;
+      padding: 8px 12px; 
+      cursor: pointer;
+      border: 1px solid #ddd; 
+      background: #eee;
     }
-    .tab button.active { background: #ccc; }
+    .tab button.active { 
+      background: #ccc; 
+    }
     .tab-content {
-      display: none; padding: 10px; border: 1px solid #ddd;
+      display: none; 
+      padding: 10px; 
+      border: 1px solid #ddd;
       background: #f9f9f9;
     }
     .copy-btn {
-      float: right; padding: 5px 10px; cursor: pointer;
-      border: none; background: #007bff; color: white;
+      float: right; 
+      padding: 5px 10px; 
+      cursor: pointer;
+      border: none; 
+      background: #007bff; 
+      color: white;
     }
     table {
-      width: 100%; border-collapse: collapse; margin-top: 10px;
+      width: 100%; 
+      border-collapse: collapse; 
+      margin-top: 10px;
     }
     th, td {
-      border: 1px solid #ddd; padding: 8px; text-align: left;
+      border: 1px solid #ddd; 
+      padding: 8px; 
+      text-align: left;
+      vertical-align: top; /* So nested tables stack nicely */
     }
-    th { background-color: #f2f2f2; }
+    th { 
+      background-color: #f2f2f2; 
+    }
     .color-circle {
-      width: 15px; height: 15px; border-radius: 50%;
-      display: inline-block; border: 1px solid #000; margin-right: 5px;
+      width: 15px; 
+      height: 15px; 
+      border-radius: 50%;
+      display: inline-block; 
+      border: 1px solid #000; 
+      margin-right: 5px;
     }
   </style>
   <script>
@@ -69,7 +101,7 @@
       const pathParts = match[2].split('.');
       let refData = tokenData[patterns[filePrefix]];
 
-      // If we are referencing global-color, jump into that key
+      // If referencing global-color, jump into that key
       if (filePrefix === 'global-color' && refData['global-color']) {
         refData = refData['global-color'];
       }
@@ -95,6 +127,62 @@
       return value;
     }
 
+    // Recursively build a nested table that reflects the JSON structure
+    function buildNestedTable(obj, tokenData, prefix = '') {
+      let html = `
+        <table>
+          <tr>
+            <th style="width: 30%">Token Name</th>
+            <th style="width: 35%">Value (Alias)</th>
+            <th style="width: 35%">Primitive Value</th>
+          </tr>
+      `;
+
+      for (const key in obj) {
+        const val = obj[key];
+        const currentName = prefix + key;
+
+        // If it's just a nested object with no direct `.value`, 
+        // we build a subtable inside a row.
+        if (typeof val === 'object' && !val?.value) {
+          // Insert a row with the name and a nested table.
+          html += `
+            <tr>
+              <td colspan="3">
+                <strong>${currentName}</strong>
+                ${buildNestedTable(val, tokenData, currentName + '.')}
+              </td>
+            </tr>
+          `;
+        }
+        else if (val && val.value) {
+          // This is a direct token with a `.value`
+          const rawValue = val.value;
+          const finalValue = fullyResolve(rawValue, tokenData);
+
+          const looksHex = typeof finalValue === 'string' && finalValue.startsWith('#');
+          const isColorType = val.type === 'color';
+          const recognized = (typeof finalValue === 'string' && isValidColor(finalValue));
+
+          let primitiveCell = finalValue;
+          if ((looksHex || isColorType || recognized) && typeof finalValue === 'string') {
+            primitiveCell = `<span class="color-circle" style="background-color: ${finalValue};"></span>${finalValue}`;
+          }
+
+          html += `
+            <tr>
+              <td><strong>${currentName}</strong></td>
+              <td>${rawValue}</td>
+              <td>${primitiveCell}</td>
+            </tr>
+          `;
+        }
+      }
+
+      html += `</table>`;
+      return html;
+    }
+
     async function loadTokens() {
       const files = [
         'output_json/primitives.json',
@@ -110,52 +198,22 @@
           const response = await fetch(file);
           if (!response.ok) throw new Error(`Failed to load ${file}`);
           tokenData[file] = await response.json();
-        } catch (e) {
-          console.error(e);
+        } catch (err) {
+          console.error(err);
         }
       }
 
       const outputDiv = document.getElementById('tokens');
 
-      // Build a table per file
+      // Build nested tables per file
       for (const filePath in tokenData) {
         const data = tokenData[filePath];
         const fileName = filePath.replace('output_json/', '').replace('.json', '').toUpperCase();
 
-        let tokensHTML = `<table><tr><th>Token Name</th><th>Value</th></tr>`;
-        function extractTokens(obj, prefix = '') {
-          for (const key in obj) {
-            const val = obj[key];
-            if (typeof val === 'object' && !val.value) {
-              extractTokens(val, prefix + key + '-');
-            } else if (val && val.value) {
-              const tokenName = prefix + key;
-              const rawValue = val.value;
-              const finalValue = fullyResolve(rawValue, tokenData);
+        // Recursively build a nested table that mirrors JSON structure
+        const tableHTML = buildNestedTable(data, tokenData, '');
 
-              const looksHex = typeof finalValue === 'string' && finalValue.startsWith('#');
-              const isColorType = val.type === 'color';
-              const recognized = (typeof finalValue === 'string' && isValidColor(finalValue));
-
-              // Show circle if recognized as color
-              if ((looksHex || isColorType || recognized) && typeof finalValue === 'string') {
-                tokensHTML += `<tr>
-                  <td><strong>${tokenName}</strong></td>
-                  <td><span class="color-circle" style="background-color: ${finalValue};"></span>${finalValue}</td>
-                </tr>`;
-              } else {
-                tokensHTML += `<tr>
-                  <td><strong>${tokenName}</strong></td>
-                  <td>${finalValue}</td>
-                </tr>`;
-              }
-            }
-          }
-        }
-        extractTokens(data);
-
-        tokensHTML += '</table>';
-
+        // Wrap the table in the usual accordion/panel
         const section = document.createElement('div');
         section.innerHTML = `
           <button class="accordion">${fileName}</button>
@@ -164,16 +222,18 @@
               <button class="tab-btn active" onclick="switchTab(event, 'tokens-${fileName}')">Token List</button>
               <button class="tab-btn" onclick="switchTab(event, 'json-${fileName}')">Raw JSON</button>
             </div>
-            <div id="tokens-${fileName}" class="tab-content" style="display: block;">${tokensHTML}</div>
+            <div id="tokens-${fileName}" class="tab-content" style="display: block;">${tableHTML}</div>
             <div id="json-${fileName}" class="tab-content">
               <button class="copy-btn" onclick="copyJSON('${fileName}')">Copy JSON</button>
               <pre id="json-data-${fileName}">${JSON.stringify(data, null, 2)}</pre>
             </div>
           </div>
         `;
+
         outputDiv.appendChild(section);
       }
 
+      // Set up accordion toggling
       document.querySelectorAll('.accordion').forEach(btn => {
         btn.addEventListener('click', function() {
           this.classList.toggle('active');
@@ -202,7 +262,7 @@
   </script>
 </head>
 <body>
-  <h1>Token List</h1>
+  <h1>Token List - Nested Tables</h1>
   <div id="tokens"></div>
 </body>
 </html>
