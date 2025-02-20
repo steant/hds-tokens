@@ -9,11 +9,21 @@
       font-family: Arial, sans-serif;
       padding: 20px;
     }
+
+    h1 {
+        padding: 0px;
+        margin: 0px;
+        margin-bottom: 20px;
+        font-size: 24px;
+    }
     /* Top-level tabs for each file */
     .file-tabs {
       display: flex;
-      gap: 10px;
+      box-sizing: border-box;
+      gap: 0px;
+      border-bottom: 1px inset #ddd;
       margin-bottom: 15px;
+      height: 36px;
     }
 
     .small {
@@ -33,11 +43,14 @@
     .file-tab {
       padding: 8px 16px;
       cursor: pointer;
-      border: 1px solid #ddd;
-      background-color: #eee;
+      border: none;
+      width: 112px;
+      background-color: #ffffff;
     }
     .file-tab.active {
-      background-color: #ccc;
+      background-color: #ffffff;
+      font-weight: 600;
+      border-bottom: 3px solid #26b439;
     }
 
     /* Each file's content container */
@@ -74,6 +87,7 @@
       width: 100%;
       border-collapse: collapse;
       margin-top: 10px;
+      border-radius: 8px;
     }
     th, td {
         border: 1px solid #ddd;
@@ -216,7 +230,7 @@
             rowsHtml += `
               <tr>
                 <td><span class="medium">${currentName}</span></td>
-                <td>${colorCell}</td>
+                <td><span class="medium">${colorCell}</span></td>
               </tr>
             `;
           } else {
@@ -287,10 +301,10 @@
       const fileContents = document.getElementById('file-contents');
 
       const nameMap = {
-        'output_json/primitives.json': 'PRIMITIVES',
-        'output_json/semantics.json': 'SEMANTICS',
-        'output_json/light.json': 'LIGHT',
-        'output_json/dark.json': 'DARK'
+        'output_json/primitives.json': 'Primitives',
+        'output_json/semantics.json': 'Semantics',
+        'output_json/light.json': 'Theme Light',
+        'output_json/dark.json': 'Theme Dark'
       };
 
       for (const filePath of files) {
@@ -420,7 +434,7 @@
   </script>
 </head>
 <body>
-  <h1>Token List (Skip Thead if No Values)</h1>
+  <h1>HDS Tokens</h1>
   <div class="file-tabs" id="file-tabs"></div>
   <div id="file-contents"></div>
 </body>
