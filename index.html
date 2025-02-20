@@ -7,39 +7,82 @@
   <style>
     body {
       font-family: Arial, sans-serif;
-      padding: 20px;
+      margin: 0;
+      padding: 0;
+    }
+    /* Fixed left navigation styles */
+    .layout {
+        display: flex;
+        gap: 20px;
+    }
+    
+    
+
+    ul {
+      padding: 0;
+      margin: 0;
     }
 
-    h1 {
-        padding: 0px;
-        margin: 0px;
-        margin-bottom: 20px;
-        font-size: 24px;
+    #left-nav {
+      display: flex;
+      position: sticky;
+      top: 36px;
+      left: 0;
+      width: 200px;
+      height: 100vh;
+      overflow-y: auto;
+      padding: 12px;
+      box-sizing: border-box;
+      border-right: 1px solid #ddd;
+      background-color: #fff;
     }
-    /* Top-level tabs for each file */
+    #left-nav ul {
+      list-style-type: none;
+      padding: 0;
+    }
+    #left-nav li {
+      margin-bottom: 10px;
+    }
+    #left-nav a {
+      text-decoration: none;
+      color: #007bff;
+      cursor: pointer;
+    }
+    #left-nav a:hover {
+      text-decoration: underline;
+    }
+    /* Main content area */
+    #main-content {
+      padding: 20px;
+    }
+    h1 {
+      padding: 0;
+      margin: 0 0 20px 0;
+      font-size: 24px;
+    }
     .file-tabs {
       display: flex;
+      position: sticky;
+      top: 0;
       box-sizing: border-box;
-      gap: 0px;
+      gap: 0;
       border-bottom: 1px inset #ddd;
       margin-bottom: 15px;
       height: 36px;
+      background: #fff;
     }
-
     .small {
-        font-size: 13px;
-        font-weight: 500;
-        line-height: 20px;
-        display: inline-block;
+      font-size: 13px;
+      font-weight: 500;
+      line-height: 20px;
+      display: inline-block;
     }
-
-    .medium {
-        font-size: 14px;
-        font-weight: 500;
-        line-height: 20px;
-        display: inline-block;
+    .small-bold {
+      font-size: 14px;
+      font-weight: 600;
+      line-height: 20px;
+      display: inline-block;
     }
-
     .file-tab {
       padding: 8px 16px;
       cursor: pointer;
@@ -53,15 +96,18 @@
       border-bottom: 3px solid #26b439;
     }
 
-    /* Each file's content container */
-    .file-content {
-      display: none; /* hidden by default */
-    }
-    .file-content.active {
-      display: block;
+    #file-contents {
+      width: 100%;
     }
 
-    /* Buttons to toggle table vs JSON */
+    .file-content {
+      display: none;
+    }
+    .file-content.active {
+      display: flex;
+      flex-direction: column;
+      width: 100%;
+    }
     .view-toggle-btn {
       padding: 5px 10px;
       margin-right: 10px;
@@ -72,7 +118,6 @@
     .view-toggle-btn.active {
       background-color: #ccc;
     }
-
     .copy-btn {
       float: right;
       padding: 5px 10px;
@@ -81,26 +126,56 @@
       background: #007bff;
       color: white;
     }
-
-    /* Table styling */
     table {
       width: 100%;
       border-collapse: collapse;
-      margin-top: 10px;
-      border-radius: 8px;
+      margin-top: 6px;
     }
+
+   
+
     th, td {
-        border: 1px solid #ddd;
-    padding: 8px;
-    height: 20px;
-    text-align: left;
-    vertical-align: middle;
-    width: 33%;
+      border-left: 2px solid #ddd;
+      padding: 8px 8px 8px 12px;
+      height: 20px;
+      text-align: left;
+      vertical-align: middle;
+      width: 33%;
     }
+    
+    table:not(table table) > tbody > tr > td,
+table:not(table table) > tr > td {
+  /* your styles here */
+ border:none;
+ padding-left: 0px;
+}
+
+
+
+
+    table:not(:has(table)) td {
+  /* styles for td in the innermost table */
+  border: none;
+  border-bottom: 1px solid #ececec;
+  border-top: 1px solid #ececec;
+  border-left: 1px solid #ececec;
+  padding: 4px 8px;
+    }
+
+    table:not(:has(table)) td:first-child {
+  /* styles for td in the innermost table */
+  border: none;
+  border-bottom: 1px solid #ececec;
+  border-left: 2px solid #ddd;
+  border-top: 1px solid #ececec;
+  padding: 4px 8px;
+    }
+
+
+    
     th {
       background-color: #f2f2f2;
     }
-
     .color-circle {
       width: 18px;
       height: 18px;
@@ -110,13 +185,10 @@
       margin-right: 5px;
       line-height: 20px;
     }
-
     .middle-flex {
-        display: flex;
-        align-items: center;
+      display: flex;
+      align-items: center;
     }
-
-    /* table-view and json-view containers */
     .table-view {
       display: block;
     }
@@ -135,15 +207,12 @@
     }
   </style>
   <script>
-    /* ================================
-       ALIAS RESOLUTION & COLOR CHECK
-       ================================ */
+    // Color and alias resolution functions
     function isValidColor(str) {
       const s = new Option().style;
       s.color = str;
       return s.color !== '';
     }
-
     function singleResolve(alias, tokenData) {
       const patterns = {
         'global-color': 'output_json/primitives.json',
@@ -152,11 +221,9 @@
       };
       const match = alias.match(/^{(global-color|light|dark)\.([^}]+)}$/);
       if (!match) return alias;
-
       const filePrefix = match[1];
       const pathParts = match[2].split('.');
       let refData = tokenData[patterns[filePrefix]];
-
       if (filePrefix === 'global-color' && refData['global-color']) {
         refData = refData['global-color'];
       }
@@ -169,7 +236,6 @@
       }
       return refData?.value ?? refData ?? alias;
     }
-
     function fullyResolve(value, tokenData) {
       for (let i = 0; i < 10; i++) {
         if (typeof value !== 'string') break;
@@ -179,32 +245,24 @@
       }
       return value;
     }
-
-    /* ================================
-       BUILD NESTED TABLE
-       ================================ */
-
-    // Returns an object: { foundValue: boolean, html: string }
-    // foundValue => did we find any .value tokens in this subtree?
-    function buildNestedTable(obj, tokenData, prefix, isPrimitives) {
+    
+    // Modified nested table builder that adds id attributes to group headers
+    function buildNestedTable(obj, tokenData, prefix, isPrimitives, isSem) {
       let rowsHtml = '';
-      let foundAnyRow = false; // track if we found a .value at all
-
+      let foundAnyRow = false;
       for (const key in obj) {
         const val = obj[key];
         const currentName = prefix ? prefix + '.' + key : key;
-
-        // If it's a nested object with no .value => subtable
         if (typeof val === 'object' && !val?.value) {
           const nested = buildNestedTable(val, tokenData, currentName, isPrimitives);
           if (nested.foundValue) {
-            // only add a row if there's something in there
             foundAnyRow = true;
             const colSpan = isPrimitives ? 2 : 3;
+            // Create an id using the group name with dots replaced by dashes
             rowsHtml += `
-              <tr>
+              <tr id="group-${currentName.replace(/\./g, '-')}">
                 <td colspan="${colSpan}">
-                  <span class="small">${currentName}</span>
+                  <span class="small small-bold">${currentName}</span>
                   ${nested.html}
                 </td>
               </tr>
@@ -215,68 +273,46 @@
           foundAnyRow = true;
           const rawValue = val.value;
           const resolved = isPrimitives ? rawValue : fullyResolve(rawValue, tokenData);
-
           const looksHex = typeof resolved === 'string' && resolved.startsWith('#');
           const isColorType = val.type === 'color';
           const recognized = (typeof resolved === 'string' && isValidColor(resolved));
-
           let colorCell = resolved;
           if ((looksHex || isColorType || recognized) && typeof resolved === 'string') {
             colorCell = `<div class="middle-flex"><span class="color-circle" style="background-color: ${resolved};"></span><span class="medium">${resolved}</span></div>`;
           }
-
           if (isPrimitives) {
-            // 2 columns
             rowsHtml += `
               <tr>
-                <td><span class="medium">${currentName}</span></td>
-                <td><span class="medium">${colorCell}</span></td>
+                <td><span class="small">${currentName}</span></td>
+                <td><span class="small">${colorCell}</span></td>
               </tr>
             `;
           } else {
-            // 3 columns: name, alias, resolved
             rowsHtml += `
               <tr>
-                 <td><span class="medium">${currentName}</span></td>
-                <td><span class="medium">${rawValue}</span></td>
-                <td><span class="medium">${colorCell}</span></td>
+                <td><span class="small">${currentName}</span></td>
+                <td><span class="small">${rawValue}</span></td>
+                <td><span class="small">${colorCell}</span></td>
               </tr>
             `;
           }
         }
       }
-
-      // No .value => no table
       if (!foundAnyRow) {
         return {
           foundValue: false,
           html: ''
         };
       }
-
-      // We found at least one row => wrap with table
-      let tableHeader = '';
-      if (isPrimitives) {
-        tableHeader = `
-          <table>
-            
-        `;
-      } else {
-        tableHeader = `
-          <table>
-            
-        `;
-      }
+      let tableHeader = `<table>`;
       const finalHtml = `${tableHeader}${rowsHtml}</table>`;
       return {
         foundValue: true,
         html: finalHtml
       };
     }
-
-    /* ================================
-       MAIN SCRIPT
-       ================================ */
+    
+    // Loads token data from JSON files and builds tabs and content areas
     async function loadTokens() {
       const files = [
         'output_json/primitives.json',
@@ -284,8 +320,6 @@
         'output_json/light.json',
         'output_json/dark.json'
       ];
-
-      // Load data
       const tokenData = {};
       for (const file of files) {
         try {
@@ -296,42 +330,30 @@
           console.error(e);
         }
       }
-
       const fileTabs = document.getElementById('file-tabs');
       const fileContents = document.getElementById('file-contents');
-
       const nameMap = {
         'output_json/primitives.json': 'Primitives',
         'output_json/semantics.json': 'Semantics',
         'output_json/light.json': 'Theme Light',
         'output_json/dark.json': 'Theme Dark'
       };
-
       for (const filePath of files) {
         const fileName = nameMap[filePath];
         const isPrimitives = filePath.includes('primitives');
+        const isSemantics = filePath.includes('semantics');
         const data = tokenData[filePath] || {};
-
-        // Build the nested table
         const { foundValue, html } = buildNestedTable(data, tokenData, '', isPrimitives);
-        // raw JSON
         const rawJSON = JSON.stringify(data, null, 2);
-
-        // Create tab button
         const tabBtn = document.createElement('button');
         tabBtn.className = 'file-tab';
         tabBtn.textContent = fileName;
         tabBtn.onclick = () => activateFileTab(fileName);
         fileTabs.appendChild(tabBtn);
-
-        // Create content container
         const contentDiv = document.createElement('div');
         contentDiv.className = 'file-content';
         contentDiv.id = `file-content-${fileName}`;
-
-        // If no tokens => show a message, else show the table
         let tableHtml = foundValue ? html : `<p>No tokens with .value found here.</p>`;
-
         contentDiv.innerHTML = `
           <div>
             <button class="view-toggle-btn active" onclick="showTable('${fileName}')">Show Table</button>
@@ -343,17 +365,14 @@
           </div>
           <pre id="json-${fileName}" class="json-view">${rawJSON}</pre>
         `;
-
         fileContents.appendChild(contentDiv);
       }
-
-      // Show the first tab by default
       if (files.length > 0) {
         const firstName = nameMap[files[0]];
         activateFileTab(firstName);
       }
     }
-
+    
     function activateFileTab(tabName) {
       document.querySelectorAll('.file-tab').forEach(tab => {
         tab.classList.remove('active');
@@ -361,31 +380,24 @@
       document.querySelectorAll('.file-content').forEach(fc => {
         fc.classList.remove('active');
       });
-
       const tabBtn = Array.from(document.querySelectorAll('.file-tab'))
         .find(b => b.textContent === tabName);
       if (tabBtn) tabBtn.classList.add('active');
-
       const contentDiv = document.getElementById(`file-content-${tabName}`);
       if (contentDiv) contentDiv.classList.add('active');
-
-      // Show table by default
       showTable(tabName);
+      updateLeftNav();
     }
-
+    
     function showTable(tabName) {
       const parent = document.getElementById(`file-content-${tabName}`);
       if (!parent) return;
-
       const tableDiv = parent.querySelector('.table-view');
       const jsonDiv  = parent.querySelector('.json-view');
-
-      // Mark sub-buttons
       parent.querySelectorAll('.view-toggle-btn').forEach(b => b.classList.remove('active'));
       const tableBtn = Array.from(parent.querySelectorAll('.view-toggle-btn'))
         .find(b => b.textContent.includes('Table'));
       if (tableBtn) tableBtn.classList.add('active');
-
       if (tableDiv) {
         tableDiv.classList.remove('hidden');
         tableDiv.style.display = 'block';
@@ -394,19 +406,18 @@
         jsonDiv.classList.remove('active');
         jsonDiv.style.display = 'none';
       }
+      updateLeftNav();
     }
-
+    
     function showJSON(tabName) {
       const parent = document.getElementById(`file-content-${tabName}`);
       if (!parent) return;
       const tableDiv = parent.querySelector('.table-view');
       const jsonDiv  = parent.querySelector('.json-view');
-
       parent.querySelectorAll('.view-toggle-btn').forEach(b => b.classList.remove('active'));
       const jsonBtn = Array.from(parent.querySelectorAll('.view-toggle-btn'))
         .find(b => b.textContent.includes('Raw JSON'));
       if (jsonBtn) jsonBtn.classList.add('active');
-
       if (tableDiv) {
         tableDiv.classList.add('hidden');
         tableDiv.style.display = 'none';
@@ -415,27 +426,66 @@
         jsonDiv.classList.add('active');
         jsonDiv.style.display = 'block';
       }
+      // Clear left nav when showing raw JSON
+      document.getElementById('left-nav').innerHTML = '';
     }
-
+    
     function copyJSON(tabName) {
       const parent = document.getElementById(`file-content-${tabName}`);
       if (!parent) return;
-
       const jsonEl = parent.querySelector('.json-view');
       if (!jsonEl) return;
-
       const content = jsonEl.textContent;
       navigator.clipboard.writeText(content).then(() => {
         alert('JSON copied to clipboard!');
       });
     }
-
+    
+    // Build left navigation based on group headers in the active file's table view,
+    // including only first and second level groups.
+    function updateLeftNav() {
+      const leftNav = document.getElementById('left-nav');
+      leftNav.innerHTML = '';
+      const activeContent = document.querySelector('.file-content.active');
+      if (!activeContent) return;
+      const groupRows = activeContent.querySelectorAll('tr[id^="group-"]');
+      if (groupRows.length === 0) {
+        leftNav.innerHTML = '<p>No token groups found.</p>';
+        return;
+      }
+      const list = document.createElement('ul');
+      groupRows.forEach(row => {
+        const id = row.id;
+        const text = row.querySelector('.small')?.textContent || id;
+        // Only include groups that are first or second level (i.e. at most one dot)
+        if (text.split('.').length <= 1) {
+          const li = document.createElement('li');
+          const link = document.createElement('a');
+          link.href = '#' + id;
+          link.textContent = text;
+          link.addEventListener('click', function(e) {
+            e.preventDefault();
+            document.getElementById(id).scrollIntoView({ behavior: 'smooth' });
+          });
+          li.appendChild(link);
+          list.appendChild(li);
+        }
+      });
+      leftNav.appendChild(list);
+    }
+    
     document.addEventListener('DOMContentLoaded', loadTokens);
   </script>
 </head>
 <body>
+  
+<div id="main-content">
   <h1>HDS Tokens</h1>
   <div class="file-tabs" id="file-tabs"></div>
-  <div id="file-contents"></div>
+  <div class="layout">
+    <div id="left-nav"></div>
+    <div id="file-contents"></div>
+  </div> 
+</div>
 </body>
 </html>
