@@ -239,30 +239,6 @@
       "type": "number"
     }
   },
-  "hds-icon": {
-    "size": {
-      "sm": {
-        "value": "{spacing.200}",
-        "type": "number"
-      },
-      "md": {
-        "value": "{spacing.250}",
-        "type": "number"
-      },
-      "lg": {
-        "value": "{spacing.300}",
-        "type": "number"
-      },
-      "xl": {
-        "value": "{spacing.450}",
-        "type": "number"
-      },
-      "xs": {
-        "value": "{spacing.150}",
-        "type": "number"
-      }
-    }
-  },
   "hds-size": {
     "icon": {
       "sm": {
