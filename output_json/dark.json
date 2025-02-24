@@ -71,6 +71,10 @@
         "secondary-active": {
           "value": "{global-color.neutral.800}",
           "type": "color"
+        },
+        "disabled": {
+          "value": "{global-color.neutral.500}",
+          "type": "color"
         }
       },
       "fill": {
@@ -84,6 +88,18 @@
             "type": "color"
           },
           "active": {
+            "value": "#ffffff",
+            "type": "color"
+          },
+          "inverse": {
+            "value": "#ffffff",
+            "type": "color"
+          },
+          "inverse-hover": {
+            "value": "#ffffff",
+            "type": "color"
+          },
+          "inverse-active": {
             "value": "#ffffff",
             "type": "color"
           }
@@ -184,7 +200,15 @@
     }
   },
   "hds-border": {
-    "action": {
+    "action-light": {
+      "value": "#ffffff",
+      "type": "color"
+    },
+    "action-bold": {
+      "value": "#ffffff",
+      "type": "color"
+    },
+    "brand": {
       "value": "#ffffff",
       "type": "color"
     }

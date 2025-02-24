@@ -155,6 +155,10 @@
     "lg": {
       "value": "{spacing.250}",
       "type": "number"
+    },
+    "negative": {
+      "value": "{spacing.neg50}",
+      "type": "number"
     }
   },
   "hds-gap": {
@@ -197,6 +201,14 @@
     "button-group-md": {
       "value": "{spacing.150}",
       "type": "number"
+    },
+    "choice-vertical": {
+      "value": "{spacing.150}",
+      "type": "number"
+    },
+    "choice-horizontal": {
+      "value": "{spacing.250}",
+      "type": "number"
     }
   },
   "hds-border": {
@@ -223,6 +235,10 @@
       },
       "sm": {
         "value": "{radius.5}",
+        "type": "number"
+      },
+      "full": {
+        "value": "{radius.99999}",
         "type": "number"
       }
     },
@@ -261,6 +277,22 @@
         "value": "{spacing.150}",
         "type": "number"
       }
+    },
+    "xs": {
+      "value": "{spacing.150}",
+      "type": "number"
+    },
+    "sm": {
+      "value": "{spacing.200}",
+      "type": "number"
+    },
+    "md": {
+      "value": "{spacing.250}",
+      "type": "number"
+    },
+    "lg": {
+      "value": "{spacing.300}",
+      "type": "number"
     }
   }
 }
