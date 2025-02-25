@@ -159,6 +159,10 @@
     "negative": {
       "value": "{spacing.neg50}",
       "type": "number"
+    },
+    "input-md": {
+      "value": "{spacing.100}",
+      "type": "number"
     }
   },
   "hds-gap": {
@@ -208,6 +212,18 @@
     },
     "choice-horizontal": {
       "value": "{spacing.250}",
+      "type": "number"
+    },
+    "input": {
+      "value": "{spacing.100}",
+      "type": "number"
+    },
+    "tooltip": {
+      "value": "{spacing.100}",
+      "type": "number"
+    },
+    "gap-label-control": {
+      "value": "{spacing.100}",
       "type": "number"
     }
   },
@@ -297,6 +313,12 @@
     "lg": {
       "value": "{spacing.300}",
       "type": "number"
+    },
+    "max-width": {
+      "tooltip": {
+        "value": 232,
+        "type": "number"
+      }
     }
   }
 }

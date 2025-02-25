@@ -131,24 +131,46 @@
             "value": "{global-color.red.500}",
             "type": "color"
           }
+        },
+        "inverse": {
+          "default": {
+            "value": "{global-color.neutral.800}",
+            "type": "color"
+          },
+          "hover": {
+            "value": "{global-color.neutral.700}",
+            "type": "color"
+          },
+          "active": {
+            "value": "{global-color.neutral.600}",
+            "type": "color"
+          }
         }
       }
     },
-    "input": {
-      "bg": {
-        "value": "{global-color.base.0}",
-        "type": "color"
-      },
-      "border": {
+    "border": {
+      "action-light-default": {
         "value": "{global-color.neutral.500}",
         "type": "color"
       },
-      "border-hover": {
+      "action-bold": {
+        "value": "{global-color.neutral.700}",
+        "type": "color"
+      },
+      "brand": {
+        "value": "{global-color.primary.500}",
+        "type": "color"
+      },
+      "action-light-hover": {
         "value": "{global-color.neutral.600}",
         "type": "color"
       },
-      "border-active": {
+      "action-light-pressed": {
         "value": "{global-color.neutral.800}",
+        "type": "color"
+      },
+      "danger": {
+        "value": "{global-color.red.600}",
         "type": "color"
       }
     },
@@ -197,20 +219,6 @@
         "value": "{global-color.base.1000}",
         "type": "color"
       }
-    }
-  },
-  "hds-border": {
-    "action-light": {
-      "value": "{global-color.neutral.500}",
-      "type": "color"
-    },
-    "action-bold": {
-      "value": "{global-color.neutral.700}",
-      "type": "color"
-    },
-    "brand": {
-      "value": "{global-color.primary.500}",
-      "type": "color"
     }
   }
 }
