@@ -16,6 +16,9 @@ jobs:
         with:
           token: ${{ secrets.GH_PAT }}
 
+      - name: Fetch recent commits
+        run: git fetch origin main --depth=2
+
       - name: Set up Python
         uses: actions/setup-python@v4
         with:
@@ -53,18 +56,18 @@ jobs:
       - name: Generate tokens.json diff summary
         id: token_diff
         run: |
-          # If this isn’t the first commit, generate a diff for tokens.json.
-          if [ $(git rev-list --count HEAD) -gt 1 ]; then
-            PREV_COMMIT=$(git rev-parse HEAD^)
-            DIFF=$(git diff $PREV_COMMIT HEAD -- tokens.json)
+          # Compare using the commit before this push and the current commit.
+          # Using github.event.before from the push event:
+          DIFF=$(git diff ${{ github.event.before }} ${{ github.sha }} -- tokens.json)
+          if [ -z "$DIFF" ]; then
+            echo "diff_summary=No changes in tokens.json" >> $GITHUB_OUTPUT
+          else
             echo "diff_summary<<EOF" >> $GITHUB_OUTPUT
             echo "$DIFF" >> $GITHUB_OUTPUT
             echo "EOF" >> $GITHUB_OUTPUT
-          else
-            echo "diff_summary<<EOF" >> $GITHUB_OUTPUT
-            echo "No previous commit to compare." >> $GITHUB_OUTPUT
-            echo "EOF" >> $GITHUB_OUTPUT
           fi
+
+
 
       - name: Send Slack Notification
         if: success() && github.ref == 'refs/heads/main'
