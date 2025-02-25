@@ -240,6 +240,10 @@
       "full": {
         "value": "{radius.99999}",
         "type": "number"
+      },
+      "none": {
+        "value": "{radius.0}",
+        "type": "number"
       }
     },
     "width": {
