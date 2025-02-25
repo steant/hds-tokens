@@ -34,7 +34,7 @@
         "type": "color"
       },
       "danger": {
-        "value": "{global-color.red.700}",
+        "value": "{global-color.red.900}",
         "type": "color"
       },
       "danger-subtle": {
@@ -102,6 +102,10 @@
           "inverse-active": {
             "value": "{global-color.primary.700}",
             "type": "color"
+          },
+          "subtle": {
+            "value": "{global-color.primary.100}",
+            "type": "color"
           }
         },
         "secondary": {
@@ -145,6 +149,10 @@
             "value": "{global-color.neutral.600}",
             "type": "color"
           }
+        },
+        "default": {
+          "value": "{global-color.base.0}",
+          "type": "color"
         }
       }
     },

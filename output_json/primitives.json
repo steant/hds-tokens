@@ -230,6 +230,10 @@
       "value": 0,
       "type": "number"
     },
+    "25": {
+      "value": 2,
+      "type": "number"
+    },
     "50": {
       "value": 4,
       "type": "number"

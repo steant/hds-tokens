@@ -163,6 +163,10 @@
     "input-md": {
       "value": "{spacing.100}",
       "type": "number"
+    },
+    "xxxs": {
+      "value": "{spacing.25}",
+      "type": "number"
     }
   },
   "hds-gap": {
@@ -222,8 +226,12 @@
       "value": "{spacing.100}",
       "type": "number"
     },
-    "gap-label-control": {
+    "label-control": {
       "value": "{spacing.100}",
+      "type": "number"
+    },
+    "toggle-control": {
+      "value": "{spacing.150}",
       "type": "number"
     }
   },
@@ -319,6 +327,18 @@
         "value": 232,
         "type": "number"
       }
+    },
+    "xl": {
+      "value": "{spacing.350}",
+      "type": "number"
+    },
+    "xxl": {
+      "value": "{spacing.400}",
+      "type": "number"
+    },
+    "xxxl": {
+      "value": "{spacing.450}",
+      "type": "number"
     }
   }
 }

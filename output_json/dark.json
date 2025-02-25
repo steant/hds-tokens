@@ -102,6 +102,10 @@
           "inverse-active": {
             "value": "#ffffff",
             "type": "color"
+          },
+          "subtle": {
+            "value": "#ffffff",
+            "type": "color"
           }
         },
         "secondary": {
@@ -145,6 +149,10 @@
             "value": "#ffffff",
             "type": "color"
           }
+        },
+        "default": {
+          "value": "#ffffff",
+          "type": "color"
         }
       }
     },
