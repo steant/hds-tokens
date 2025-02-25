@@ -30,6 +30,9 @@ jobs:
       - name: Verify output
         run: ls -la output_json/
 
+      - name: Zip output folder
+        run: zip -r output_json.zip output_json/
+
       - name: Configure Git
         run: |
           git config --global user.name "github-actions[bot]"
@@ -37,6 +40,6 @@ jobs:
 
       - name: Commit and Push Changes
         run: |
-          git add output_json || echo "No changes to commit"
-          git diff --staged --quiet || git commit -m "Add split JSON files"
+          git add output_json output_json.zip || echo "No changes to commit"
+          git diff --staged --quiet || git commit -m "Add split JSON files and zip archive"
           git push origin main
