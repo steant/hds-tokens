@@ -55,5 +55,5 @@ jobs:
           SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
         run: |
           curl -X POST -H 'Content-type: application/json' \
-            --data "{\"text\": \"New changes have been pushed to <https://github.com/${{ github.repository }}/commit/${{ github.sha }}|GitHub>.\"}" \
+            --data "{\"text\": \"New token updates!\n\nDownload the latest JSON zip file: <https://github.com/steant/hds-tokens/raw/main/output_json/output_json.zip|Download JSON Zip>\n\n<https://steant.github.io/hds-tokens/|hds-tokens HDS Token list>\"}" \
             $SLACK_WEBHOOK_URL
