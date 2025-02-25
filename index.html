@@ -22,6 +22,19 @@
       margin: 0;
     }
 
+    .top {
+      display: flex;
+    align-items: center;
+    width: 100%;
+    justify-content: space-between;
+    flex-direction: row;
+    
+    }
+
+    .top a {
+      padding-right: 20px;
+    }
+
     #left-nav {
       display: flex;
       flex-direction: column;
@@ -462,7 +475,7 @@
 </head>
 <body>
   <div id="main-content" class="wrapper">
-    <h1>HDS Tokens</h1>
+    <div class="top"><h1>HDS Tokens</h1><a href="https://github.com/yourusername/yourrepo/raw/main/output_json.zip" download>Download JSON Zip</a></div>
     <div class="file-tabs" id="file-tabs"></div>
     <div class="layout row-wrapper">
       <div id="left-nav"></div>

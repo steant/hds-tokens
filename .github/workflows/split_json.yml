@@ -14,7 +14,7 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
         with:
-          token: ${{ secrets.GH_PAT }}  # Use the GitHub token
+          token: ${{ secrets.GH_PAT }}
 
       - name: Set up Python
         uses: actions/setup-python@v4
@@ -31,7 +31,12 @@ jobs:
         run: ls -la output_json/
 
       - name: Zip output folder
-        run: zip -r output_json.zip output_json/
+        run: |
+          cd output_json
+          zip -r output_json.zip . -x output_json.zip
+
+      - name: Verify zipped file
+        run: ls -la output_json/
 
       - name: Configure Git
         run: |
@@ -40,6 +45,6 @@ jobs:
 
       - name: Commit and Push Changes
         run: |
-          git add output_json output_json.zip || echo "No changes to commit"
-          git diff --staged --quiet || git commit -m "Add split JSON files and zip archive"
+          git add output_json || echo "No changes to commit"
+          git diff --staged --quiet || git commit -m "Add split JSON files and zipped archive"
           git push origin main
