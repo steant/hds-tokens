@@ -16,9 +16,6 @@ jobs:
         with:
           token: ${{ secrets.GH_PAT }}
 
-      - name: Fetch recent commits
-        run: git fetch origin main --depth=2
-
       - name: Set up Python
         uses: actions/setup-python@v4
         with:
@@ -53,21 +50,6 @@ jobs:
           git diff --staged --quiet || git commit -m "Add split JSON files and zipped archive"
           git push origin main
 
-      - name: Generate tokens.json diff summary
-        id: token_diff
-        run: |
-          # Compare using the commit before this push and the current commit.
-          # Using github.event.before from the push event:
-          DIFF=$(git diff ${{ github.event.before }} ${{ github.sha }} -- tokens.json)
-          if [ -z "$DIFF" ]; then
-            echo "diff_summary=No changes in tokens.json" >> $GITHUB_OUTPUT
-          else
-            echo "diff_summary<<EOF" >> $GITHUB_OUTPUT
-            echo "$DIFF" >> $GITHUB_OUTPUT
-            echo "EOF" >> $GITHUB_OUTPUT
-          fi
-
-
 
       - name: Send Slack Notification
         if: success() && github.ref == 'refs/heads/main'
@@ -75,5 +57,5 @@ jobs:
           SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
         run: |
           curl -X POST -H 'Content-type: application/json' \
-            --data "{\"text\": \"New token updates!\n\nDownload the latest JSON zip file: <https://github.com/steant/hds-tokens/raw/main/output_json/output_json.zip|Download JSON Zip>\n\n<https://steant.github.io/hds-tokens/|HDS Token list>\n\n${{ github.event.head_commit.message }}\n\nChanges in tokens.json:\n${{ steps.token_diff.outputs.diff_summary }}\"}" \
+            --data "{\"text\": \"New token updates!\n\nDownload the latest JSON zip file: <https://github.com/steant/hds-tokens/raw/main/output_json/output_json.zip|Download JSON Zip>\n\n<https://steant.github.io/hds-tokens/|HDS Token list>\n\n${{ github.event.head_commit.message }}\"}" \
             $SLACK_WEBHOOK_URL
