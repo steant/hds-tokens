@@ -300,10 +300,10 @@
     // Loads token data from JSON files and builds tabs and content areas
     async function loadTokens() {
       const files = [
-        'output_json/primitives.json',
         'output_json/semantics.json',
         'output_json/light.json',
-        'output_json/dark.json'
+        'output_json/dark.json',
+        'output_json/primitives.json'
       ];
       const tokenData = {};
       for (const file of files) {
