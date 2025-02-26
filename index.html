@@ -216,28 +216,44 @@
       return s.color !== '';
     }
     function singleResolve(alias, tokenData) {
-      const patterns = {
-        'global-color': 'output_json/primitives.json',
-        'light': 'output_json/light.json',
-        'dark': 'output_json/dark.json'
-      };
-      const match = alias.match(/^{(global-color|light|dark)\.([^}]+)}$/);
-      if (!match) return alias;
-      const filePrefix = match[1];
-      const pathParts = match[2].split('.');
-      let refData = tokenData[patterns[filePrefix]];
-      if (filePrefix === 'global-color' && refData['global-color']) {
-        refData = refData['global-color'];
-      }
-      for (const part of pathParts) {
-        if (refData && typeof refData === 'object' && part in refData) {
-          refData = refData[part];
-        } else {
-          return alias;
-        }
-      }
-      return refData?.value ?? refData ?? alias;
+  // First, try matching aliases with a known prefix
+  let match = alias.match(/^{(global-color|light|dark)\.([^}]+)}$/);
+  if (match) {
+    const filePrefix = match[1];
+    const pathParts = match[2].split('.');
+    let refData = tokenData[filePrefix === 'global-color' ? 'output_json/primitives.json' : 'output_json/' + filePrefix + '.json'];
+    if (filePrefix === 'global-color' && refData['global-color']) {
+      refData = refData['global-color'];
     }
+    for (const part of pathParts) {
+      if (refData && typeof refData === 'object' && part in refData) {
+        refData = refData[part];
+      } else {
+        return alias;
+      }
+    }
+    return refData?.value ?? refData ?? alias;
+  }
+  
+  // Fallback: If alias doesn't include a known prefix,
+  // assume it refers to a primitive token.
+  match = alias.match(/^{([^}]+)}$/);
+  if (match) {
+    const path = match[1];
+    const pathParts = path.split('.');
+    let refData = tokenData['output_json/primitives.json'];
+    for (const part of pathParts) {
+      if (refData && typeof refData === 'object' && part in refData) {
+        refData = refData[part];
+      } else {
+        return alias;
+      }
+    }
+    return refData?.value ?? refData ?? alias;
+  }
+  return alias;
+}
+
     function fullyResolve(value, tokenData) {
       for (let i = 0; i < 10; i++) {
         if (typeof value !== 'string') break;
@@ -250,65 +266,87 @@
     
     // Build nested divs (instead of tables) for token display.
     // Now each group header stores a data-level attribute equal to the number of dots in the original name.
-    function buildNestedDivs(obj, tokenData, prefix, isPrimitives) {
-      let rowsHtml = '';
-      let foundAnyRow = false;
-      for (const key in obj) {
-        const val = obj[key];
-        // Build the current token name from the prefix and key
-        const currentName = prefix ? prefix + '.' + key : key;
-        // Transform token name: prepend "--" and replace dots with "-"
-        const tokenName = "--" + currentName.replace(/\./g, "-");
-        // Count the dots in currentName (level 0 means first-level)
-        const level = (currentName.match(/\./g) || []).length;
-        if (typeof val === 'object' && !val?.value) {
-          const nested = buildNestedDivs(val, tokenData, currentName, isPrimitives);
-          if (nested.foundValue) {
-            foundAnyRow = true;
-            rowsHtml += `
-              <div class="token-row token-group" id="group-${currentName.replace(/\./g, '-')}" data-level="${level}">
-                <div class="token-cell token-cell-group">
-                  <span class="small small-bold">${tokenName}</span>
-                  ${nested.html}
-                </div>
-              </div>
-            `;
-          }
-        } else if (val && val.value) {
-          foundAnyRow = true;
-          const rawValue = val.value;
-          const resolved = isPrimitives ? rawValue : fullyResolve(rawValue, tokenData);
-          const looksHex = typeof resolved === 'string' && resolved.startsWith('#');
-          const isColorType = val.type === 'color';
-          const recognized = (typeof resolved === 'string' && isValidColor(resolved));
-          let colorCell = resolved;
-          if ((looksHex || isColorType || recognized) && typeof resolved === 'string') {
-            colorCell = `<div class="middle-flex"><span class="color-circle" style="background-color: ${resolved};"></span><span class="small">${resolved}</span></div>`;
-          }
-          if (isPrimitives) {
-            rowsHtml += `
-              <div class="token-row">
-                <div class="token-cell"><span class="small">${tokenName}</span></div>
-                <div class="token-cell"><span class="small">${colorCell}</span></div>
-              </div>
-            `;
-          } else {
-            rowsHtml += `
-              <div class="token-row">
-                <div class="token-cell"><span class="small">${tokenName}</span></div>
-                <div class="token-cell"><span class="small">${rawValue}</span></div>
-                <div class="token-cell"><span class="small">${colorCell}</span></div>
-              </div>
-            `;
-          }
-        }
+    function buildNestedDivs(obj, tokenData, prefix, forceResolved, isPrimitives) {
+  let rowsHtml = '';
+  let foundAnyRow = false;
+  for (const key in obj) {
+    const val = obj[key];
+    const currentName = prefix ? prefix + '.' + key : key;
+    const tokenName = "--" + currentName.replace(/\./g, "-");
+    const level = (currentName.match(/\./g) || []).length;
+    
+    if (typeof val === 'object' && !val?.value) {
+      // Pass forceResolved to recursive calls too
+      const nested = buildNestedDivs(val, tokenData, currentName, forceResolved, isPrimitives);
+      if (nested.foundValue) {
+        foundAnyRow = true;
+        rowsHtml += `
+          <div class="token-row token-group" id="group-${currentName.replace(/\./g, '-')}" data-level="${level}">
+            <div class="token-cell token-cell-group">
+              <span class="small small-bold">${tokenName}</span>
+              ${nested.html}
+            </div>
+          </div>
+        `;
       }
-      if (!foundAnyRow) {
-        return { foundValue: false, html: '' };
-      }
-      let tableHtml = `<div class="token-table">${rowsHtml}</div>`;
-      return { foundValue: true, html: tableHtml };
+    } else if (val && val.value) {
+  foundAnyRow = true;
+  const rawValue = val.value;
+  // For non-primitives, resolve the value
+  const resolved = isPrimitives ? rawValue : fullyResolve(rawValue, tokenData);
+  
+  // Determine if the resolved value should be formatted as a color
+  const looksHex = typeof resolved === 'string' && resolved.startsWith('#');
+  const isColorType = val.type === 'color';
+  const recognized = (typeof resolved === 'string' && isValidColor(resolved));
+  let colorCell = resolved;
+  if ((looksHex || isColorType || recognized) && typeof resolved === 'string') {
+    colorCell = `<div class="middle-flex">
+                   <span class="color-circle" style="background-color: ${resolved};"></span>
+                   <span class="small">${resolved}</span>
+                 </div>`;
+  }
+  
+  if (isPrimitives) {
+    // For primitives, keep two columns: token name and formatted value.
+    rowsHtml += `
+      <div class="token-row">
+        <div class="token-cell"><span class="small">${tokenName}</span></div>
+        <div class="token-cell"><span class="small">${colorCell}</span></div>
+      </div>
+    `;
+  } else {
+    if (forceResolved) {
+      // For semantics tab: second column = resolved (with color formatting if applicable),
+      // third column = raw token reference.
+      rowsHtml += `
+        <div class="token-row">
+          <div class="token-cell"><span class="small">${tokenName}</span></div>
+          <div class="token-cell"><span class="small">${rawValue}</span></div>
+          <div class="token-cell"><span class="small">${colorCell}</span></div>          
+        </div>
+      `;
+    } else {
+      // For Theme Light/Dark: keep the original order (raw value then color-formatted resolved value)
+      rowsHtml += `
+        <div class="token-row">
+          <div class="token-cell"><span class="small">${tokenName}</span></div>
+          <div class="token-cell"><span class="small">${rawValue}</span></div>
+          <div class="token-cell"><span class="small">${colorCell}</span></div>
+        </div>
+      `;
     }
+  }
+}
+
+  }
+  if (!foundAnyRow) {
+    return { foundValue: false, html: '' };
+  }
+  let tableHtml = `<div class="token-table">${rowsHtml}</div>`;
+  return { foundValue: true, html: tableHtml };
+}
+
     
     // Loads token data from JSON files and builds tabs and content areas
     async function loadTokens() {
@@ -340,7 +378,9 @@
         const fileName = nameMap[filePath];
         const isPrimitives = filePath.includes('primitives');
         const data = tokenData[filePath] || {};
-        const { foundValue, html } = buildNestedDivs(data, tokenData, '', isPrimitives);
+        const forceResolved = filePath === 'output_json/semantics.json';
+const { foundValue, html } = buildNestedDivs(data, tokenData, '', forceResolved, isPrimitives);
+
         const rawJSON = JSON.stringify(data, null, 2);
         const tabBtn = document.createElement('button');
         tabBtn.className = 'file-tab';
