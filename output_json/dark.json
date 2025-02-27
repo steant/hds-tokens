@@ -44,6 +44,18 @@
       "inverse": {
         "value": "{global-color.base.0}",
         "type": "color"
+      },
+      "success": {
+        "value": "{global-color.primary.300}",
+        "type": "color"
+      },
+      "info": {
+        "value": "{global-color.primary.300}",
+        "type": "color"
+      },
+      "warning": {
+        "value": "{global-color.primary.300}",
+        "type": "color"
       }
     },
     "bg": {
@@ -153,6 +165,12 @@
         "default": {
           "value": "#ffffff",
           "type": "color"
+        },
+        "info": {
+          "default": {
+            "value": "#ffffff",
+            "type": "color"
+          }
         }
       }
     },
@@ -217,6 +235,14 @@
       },
       "brand": {
         "value": "{global-color.primary.300}",
+        "type": "color"
+      },
+      "info": {
+        "value": "{global-color.primary.300}",
+        "type": "color"
+      },
+      "minimal": {
+        "value": "{global-color.neutral.300}",
         "type": "color"
       }
     }

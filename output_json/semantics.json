@@ -167,6 +167,10 @@
     "xxxs": {
       "value": "{spacing.25}",
       "type": "number"
+    },
+    "nospacing": {
+      "value": "{spacing.0}",
+      "type": "number"
     }
   },
   "hds-gap": {
