@@ -56,6 +56,10 @@
       "warning": {
         "value": "{global-color.primary.300}",
         "type": "color"
+      },
+      "in-progress": {
+        "value": "{global-color.primary.300}",
+        "type": "color"
       }
     },
     "bg": {
@@ -171,6 +175,18 @@
             "value": "#ffffff",
             "type": "color"
           }
+        },
+        "warning": {
+          "default": {
+            "value": "#ffffff",
+            "type": "color"
+          }
+        },
+        "in-progress": {
+          "default": {
+            "value": "#ffffff",
+            "type": "color"
+          }
         }
       }
     },
@@ -229,7 +245,7 @@
         "value": "{global-color.primary.300}",
         "type": "color"
       },
-      "information": {
+      "info": {
         "value": "{global-color.primary.300}",
         "type": "color"
       },
@@ -237,12 +253,12 @@
         "value": "{global-color.primary.300}",
         "type": "color"
       },
-      "info": {
-        "value": "{global-color.primary.300}",
-        "type": "color"
-      },
       "minimal": {
         "value": "{global-color.neutral.300}",
+        "type": "color"
+      },
+      "in-progress": {
+        "value": "{global-color.primary.300}",
         "type": "color"
       }
     }
