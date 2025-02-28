@@ -237,6 +237,10 @@
     "toggle-control": {
       "value": "{spacing.150}",
       "type": "number"
+    },
+    "xxxs": {
+      "value": "{spacing.25}",
+      "type": "number"
     }
   },
   "hds-border": {

@@ -214,6 +214,18 @@
       "danger": {
         "value": "#ffffff",
         "type": "color"
+      },
+      "layout-default": {
+        "value": "#ffffff",
+        "type": "color"
+      },
+      "layout-subtle": {
+        "value": "#ffffff",
+        "type": "color"
+      },
+      "passive": {
+        "value": "#ffffff",
+        "type": "color"
       }
     },
     "icon": {
