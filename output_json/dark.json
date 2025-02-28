@@ -136,6 +136,10 @@
           "active": {
             "value": "#ffffff",
             "type": "color"
+          },
+          "subtle": {
+            "value": "#ffffff",
+            "type": "color"
           }
         },
         "danger": {
@@ -148,6 +152,10 @@
             "type": "color"
           },
           "active": {
+            "value": "#ffffff",
+            "type": "color"
+          },
+          "inverse": {
             "value": "#ffffff",
             "type": "color"
           }
@@ -174,10 +182,18 @@
           "default": {
             "value": "#ffffff",
             "type": "color"
+          },
+          "inverse": {
+            "value": "#ffffff",
+            "type": "color"
           }
         },
         "warning": {
           "default": {
+            "value": "#ffffff",
+            "type": "color"
+          },
+          "inverse": {
             "value": "#ffffff",
             "type": "color"
           }
@@ -271,6 +287,10 @@
       },
       "in-progress": {
         "value": "{global-color.primary.300}",
+        "type": "color"
+      },
+      "danger-bold": {
+        "value": "#ffffff",
         "type": "color"
       }
     }

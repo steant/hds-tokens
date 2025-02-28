@@ -108,11 +108,11 @@
             "type": "color"
           },
           "inverse": {
-            "value": "{global-color.primary.700}",
+            "value": "{global-color.primary.600}",
             "type": "color"
           },
           "inverse-hover": {
-            "value": "{global-color.primary.600}",
+            "value": "{global-color.primary.700}",
             "type": "color"
           },
           "inverse-active": {
@@ -136,6 +136,10 @@
           "active": {
             "value": "{global-color.neutral.500}",
             "type": "color"
+          },
+          "subtle": {
+            "value": "{global-color.neutral.300}",
+            "type": "color"
           }
         },
         "danger": {
@@ -149,6 +153,10 @@
           },
           "active": {
             "value": "{global-color.red.500}",
+            "type": "color"
+          },
+          "inverse": {
+            "value": "{global-color.red.700}",
             "type": "color"
           }
         },
@@ -174,11 +182,19 @@
           "default": {
             "value": "{global-color.blue.50}",
             "type": "color"
+          },
+          "inverse": {
+            "value": "{global-color.blue.600}",
+            "type": "color"
           }
         },
         "warning": {
           "default": {
             "value": "{global-color.orange.100}",
+            "type": "color"
+          },
+          "inverse": {
+            "value": "{global-color.orange.300}",
             "type": "color"
           }
         },
@@ -271,6 +287,10 @@
       },
       "in-progress": {
         "value": "{global-color.purple.600}",
+        "type": "color"
+      },
+      "danger-bold": {
+        "value": "{global-color.red.900}",
         "type": "color"
       }
     }

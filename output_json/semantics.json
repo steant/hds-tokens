@@ -241,6 +241,10 @@
     "xxxs": {
       "value": "{spacing.25}",
       "type": "number"
+    },
+    "info-vertical": {
+      "value": "{spacing.200}",
+      "type": "number"
     }
   },
   "hds-border": {
