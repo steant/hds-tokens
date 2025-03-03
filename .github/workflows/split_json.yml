@@ -53,7 +53,8 @@ jobs:
       - name: Get Last Commit Message for tokens.json
         id: get_commit_message
         run: |
-          COMMIT_MESSAGE=$(git log -1 --pretty=format:%s -- tokens.json)
+          LAST_COMMIT=$(git log -1 --pretty=format:"%H" -- tokens.json)
+          COMMIT_MESSAGE=$(git log -1 --pretty=format:"%s" $LAST_COMMIT)
           echo "COMMIT_MESSAGE=$COMMIT_MESSAGE" >> $GITHUB_ENV
 
       - name: Send Slack Notification
