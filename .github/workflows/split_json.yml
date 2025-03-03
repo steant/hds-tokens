@@ -47,9 +47,12 @@ jobs:
         id: commit_changes
         run: |
           git add output_json || echo "No changes to commit"
-          git diff --staged --quiet || git commit -m "Add split JSON files and zipped archive"
+          git diff --staged --quiet || git commit -m "Updated JSON tokens"
           git push origin main
 
+      - name: Get Last Commit Message
+        id: get_commit_message
+        run: echo "COMMIT_MESSAGE=$(git log -1 --pretty=%B)" >> $GITHUB_ENV
 
       - name: Send Slack Notification
         if: success() && github.ref == 'refs/heads/main'
@@ -57,5 +60,5 @@ jobs:
           SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
         run: |
           curl -X POST -H 'Content-type: application/json' \
-            --data "{\"text\": \"New token updates!\n\nDownload the latest JSON zip file: <https://github.com/steant/hds-tokens/raw/main/output_json/output_json.zip|Download JSON Zip>\n\n<https://steant.github.io/hds-tokens/|HDS Token list>\"}" \
+            --data "{\"text\": \"New token updates!\n\n*Commit Message:* $COMMIT_MESSAGE\n\nDownload the latest JSON zip file: <https://github.com/steant/hds-tokens/raw/main/output_json/output_json.zip|Download JSON Zip>\n\n<https://steant.github.io/hds-tokens/|HDS Token list>\"}" \
             $SLACK_WEBHOOK_URL
