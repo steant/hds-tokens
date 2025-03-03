@@ -382,6 +382,10 @@
     }
   },
   "opacity": {
+    "0": {
+      "value": 0,
+      "type": "number"
+    },
     "50": {
       "value": 50,
       "type": "number"

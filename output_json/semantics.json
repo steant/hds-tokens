@@ -293,6 +293,10 @@
     "disabled": {
       "value": "{opacity.50}",
       "type": "number"
+    },
+    "hidden": {
+      "value": "{opacity.0}",
+      "type": "number"
     }
   },
   "hds-size": {
