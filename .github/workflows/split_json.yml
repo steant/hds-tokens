@@ -50,9 +50,11 @@ jobs:
           git diff --staged --quiet || git commit -m "Updated JSON tokens"
           git push origin main
 
-      - name: Get Last Commit Message
+      - name: Get Last Commit Message for tokens.json
         id: get_commit_message
-        run: echo "COMMIT_MESSAGE=$(git log -1 --pretty=%B)" >> $GITHUB_ENV
+        run: |
+          COMMIT_MESSAGE=$(git log -1 --pretty=format:%s -- tokens.json)
+          echo "COMMIT_MESSAGE=$COMMIT_MESSAGE" >> $GITHUB_ENV
 
       - name: Send Slack Notification
         if: success() && github.ref == 'refs/heads/main'
