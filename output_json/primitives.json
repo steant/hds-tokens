@@ -223,6 +223,10 @@
     "1": {
       "value": 1,
       "type": "number"
+    },
+    "2": {
+      "value": 2,
+      "type": "number"
     }
   },
   "radius": {

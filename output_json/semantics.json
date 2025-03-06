@@ -171,6 +171,14 @@
     "nospacing": {
       "value": "{spacing.0}",
       "type": "number"
+    },
+    "table-cell-md": {
+      "value": "{spacing.200}",
+      "type": "number"
+    },
+    "table-cell-sm": {
+      "value": "{spacing.100}",
+      "type": "number"
     }
   },
   "hds-gap": {
@@ -286,6 +294,10 @@
       "md": {
         "value": "{stroke.1}",
         "type": "number"
+      },
+      "lg": {
+        "value": "{stroke.2}",
+        "type": "number"
       }
     }
   },
@@ -354,6 +366,14 @@
     },
     "xxxl": {
       "value": "{spacing.450}",
+      "type": "number"
+    },
+    "4xl": {
+      "value": "{spacing.500}",
+      "type": "number"
+    },
+    "min-table-cell": {
+      "value": "{spacing.600}",
       "type": "number"
     }
   }
