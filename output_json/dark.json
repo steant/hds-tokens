@@ -244,6 +244,16 @@
         }
       }
     },
+    "shadow": {
+      "action-focus": {
+        "value": "#ffffff",
+        "type": "color"
+      },
+      "action": {
+        "value": "#ffffff",
+        "type": "color"
+      }
+    },
     "border": {
       "action-light-default": {
         "value": "#ffffff",
@@ -307,7 +317,7 @@
         "value": "#ffffff",
         "type": "color"
       },
-      "danger-subtle": {
+      "danger-bold": {
         "value": "#ffffff",
         "type": "color"
       },
@@ -329,18 +339,6 @@
       },
       "in-progress": {
         "value": "{global-color.primary.300}",
-        "type": "color"
-      },
-      "danger-bold": {
-        "value": "#ffffff",
-        "type": "color"
-      }
-    }
-  },
-  "hds-shadow": {
-    "action-focus": {
-      "color": {
-        "value": "#ffffff",
         "type": "color"
       }
     }

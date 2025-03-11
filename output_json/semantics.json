@@ -376,5 +376,39 @@
       "value": "{spacing.600}",
       "type": "number"
     }
+  },
+  "hds-shadow": {
+    "action-focus": {
+      "spread": {
+        "value": "{shadow.spread.2}",
+        "type": "number"
+      },
+      "position": {
+        "value": "{shadow.spread.0}",
+        "type": "number"
+      },
+      "blur": {
+        "value": "{shadow.blur.0}",
+        "type": "number"
+      }
+    },
+    "position-x": {
+      "value": "{shadow.x.0}",
+      "type": "number"
+    },
+    "action": {
+      "spread": {
+        "value": "{shadow.spread.1}",
+        "type": "number"
+      },
+      "position": {
+        "value": "{shadow.spread.0}",
+        "type": "number"
+      },
+      "blur": {
+        "value": "{shadow.blur.0}",
+        "type": "number"
+      }
+    }
   }
 }

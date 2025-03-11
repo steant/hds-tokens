@@ -449,6 +449,12 @@
         "value": 3,
         "type": "number"
       }
+    },
+    "x": {
+      "0": {
+        "value": 0,
+        "type": "number"
+      }
     }
   }
 }

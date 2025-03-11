@@ -223,7 +223,7 @@
           "type": "color"
         },
         "selected": {
-          "value": "{global-color.primary.100}",
+          "value": "{global-color.primary.200}",
           "type": "color"
         },
         "draft": {
@@ -235,13 +235,23 @@
           "type": "color"
         },
         "draft-hover": {
-          "value": "{global-color.neutral.100}",
+          "value": "{global-color.neutral.200}",
           "type": "color"
         },
         "published-draft-hover": {
           "value": "{global-color.purple.100}",
           "type": "color"
         }
+      }
+    },
+    "shadow": {
+      "action-focus": {
+        "value": "{global-color.base.1000}",
+        "type": "color"
+      },
+      "action": {
+        "value": "{global-color.neutral.500}",
+        "type": "color"
       }
     },
     "border": {
@@ -307,8 +317,8 @@
         "value": "{global-color.red.600}",
         "type": "color"
       },
-      "danger-subtle": {
-        "value": "{global-color.red.800}",
+      "danger-bold": {
+        "value": "{global-color.red.900}",
         "type": "color"
       },
       "warning": {
@@ -329,18 +339,6 @@
       },
       "in-progress": {
         "value": "{global-color.purple.600}",
-        "type": "color"
-      },
-      "danger-bold": {
-        "value": "{global-color.red.900}",
-        "type": "color"
-      }
-    }
-  },
-  "hds-shadow": {
-    "action-focus": {
-      "color": {
-        "value": "{global-color.base.1000}",
         "type": "color"
       }
     }
