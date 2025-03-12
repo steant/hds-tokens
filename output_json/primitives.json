@@ -323,6 +323,10 @@
   },
   "font": {
     "size": {
+      "11": {
+        "value": 11,
+        "type": "number"
+      },
       "12": {
         "value": 12,
         "type": "number"
@@ -349,6 +353,10 @@
       }
     },
     "line-height": {
+      "12": {
+        "value": 12,
+        "type": "number"
+      },
       "16": {
         "value": 16,
         "type": "number"
