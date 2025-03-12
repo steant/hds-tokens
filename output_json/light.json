@@ -211,6 +211,14 @@
             "value": "{global-color.purple.50}",
             "type": "color"
           }
+        },
+        "hover": {
+          "value": "{global-color.neutral.200}",
+          "type": "color"
+        },
+        "active": {
+          "value": "{global-color.neutral.300}",
+          "type": "color"
         }
       },
       "table": {
@@ -223,7 +231,7 @@
           "type": "color"
         },
         "selected": {
-          "value": "{global-color.primary.200}",
+          "value": "{global-color.primary.50}",
           "type": "color"
         },
         "draft": {
@@ -241,6 +249,10 @@
         "published-draft-hover": {
           "value": "{global-color.purple.100}",
           "type": "color"
+        },
+        "selected-hover": {
+          "value": "{global-color.primary.100}",
+          "type": "color"
         }
       }
     },
@@ -251,6 +263,18 @@
       },
       "action": {
         "value": "{global-color.neutral.500}",
+        "type": "color"
+      },
+      "input": {
+        "value": "#0000000d",
+        "type": "color"
+      },
+      "input-focus": {
+        "value": "#00000012",
+        "type": "color"
+      },
+      "toast": {
+        "value": "#0000001f",
         "type": "color"
       }
     },

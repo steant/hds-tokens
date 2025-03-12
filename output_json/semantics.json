@@ -354,6 +354,14 @@
       "tooltip": {
         "value": 232,
         "type": "number"
+      },
+      "filter-value": {
+        "value": 164,
+        "type": "number"
+      },
+      "content-200": {
+        "value": 200,
+        "type": "number"
       }
     },
     "xl": {
@@ -374,6 +382,14 @@
     },
     "min-table-cell": {
       "value": "{spacing.600}",
+      "type": "number"
+    },
+    "header": {
+      "value": "{spacing.600}",
+      "type": "number"
+    },
+    "table-head": {
+      "value": "{spacing.450}",
       "type": "number"
     }
   },
@@ -407,6 +423,60 @@
       },
       "blur": {
         "value": "{shadow.blur.0}",
+        "type": "number"
+      }
+    },
+    "input": {
+      "spread": {
+        "value": "{shadow.spread.0}",
+        "type": "number"
+      },
+      "position": {
+        "value": "{shadow.spread.1}",
+        "type": "number"
+      },
+      "blur": {
+        "value": "{shadow.blur.1}",
+        "type": "number"
+      }
+    },
+    "input-focus": {
+      "spread": {
+        "value": "{shadow.spread.3}",
+        "type": "number"
+      },
+      "position": {
+        "value": "{shadow.y.0}",
+        "type": "number"
+      },
+      "blur": {
+        "value": "{shadow.blur.0}",
+        "type": "number"
+      }
+    },
+    "toast": {
+      "spread-1": {
+        "value": "{shadow.spread.0}",
+        "type": "number"
+      },
+      "position-1": {
+        "value": "{shadow.y.3}",
+        "type": "number"
+      },
+      "blur-1": {
+        "value": "{shadow.blur.8}",
+        "type": "number"
+      },
+      "spread-2": {
+        "value": "{shadow.spread.0}",
+        "type": "number"
+      },
+      "position-2": {
+        "value": "{shadow.y.12}",
+        "type": "number"
+      },
+      "blur-2": {
+        "value": "{shadow.blur.32}",
         "type": "number"
       }
     }

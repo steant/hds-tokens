@@ -211,6 +211,14 @@
             "value": "#ffffff",
             "type": "color"
           }
+        },
+        "hover": {
+          "value": "#ffffff",
+          "type": "color"
+        },
+        "active": {
+          "value": "#ffffff",
+          "type": "color"
         }
       },
       "table": {
@@ -241,6 +249,10 @@
         "published-draft-hover": {
           "value": "{global-color.neutral.600}",
           "type": "color"
+        },
+        "selected-hover": {
+          "value": "{global-color.neutral.400}",
+          "type": "color"
         }
       }
     },
@@ -250,6 +262,18 @@
         "type": "color"
       },
       "action": {
+        "value": "#ffffff",
+        "type": "color"
+      },
+      "input": {
+        "value": "#ffffff",
+        "type": "color"
+      },
+      "input-focus": {
+        "value": "#ffffff",
+        "type": "color"
+      },
+      "toast": {
         "value": "#ffffff",
         "type": "color"
       }
