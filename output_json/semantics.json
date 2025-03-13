@@ -519,6 +519,20 @@
         "value": "{shadow.spread.0}",
         "type": "number"
       }
+    },
+    "input-shadow": {
+      "spread": {
+        "value": "{shadow.spread.0}",
+        "type": "number"
+      },
+      "position": {
+        "value": "{shadow.spread.1}",
+        "type": "number"
+      },
+      "blur": {
+        "value": "{shadow.blur.1}",
+        "type": "number"
+      }
     }
   }
 }
