@@ -276,6 +276,10 @@
       "toast": {
         "value": "#ffffff",
         "type": "color"
+      },
+      "header": {
+        "value": "#ffffff",
+        "type": "color"
       }
     },
     "border": {

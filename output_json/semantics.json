@@ -414,7 +414,7 @@
         "type": "number"
       },
       "position": {
-        "value": "{shadow.spread.0}",
+        "value": "{shadow.y.0}",
         "type": "number"
       },
       "blur": {
@@ -432,7 +432,7 @@
         "type": "number"
       },
       "position": {
-        "value": "{shadow.spread.0}",
+        "value": "{shadow.y.0}",
         "type": "number"
       },
       "blur": {
@@ -491,6 +491,32 @@
       },
       "blur-2": {
         "value": "{shadow.blur.32}",
+        "type": "number"
+      }
+    },
+    "header": {
+      "spread-1": {
+        "value": "{shadow.spread.0}",
+        "type": "number"
+      },
+      "position-1": {
+        "value": "{shadow.y.1}",
+        "type": "number"
+      },
+      "blur-1": {
+        "value": "{shadow.blur.1}",
+        "type": "number"
+      },
+      "position-2": {
+        "value": "{shadow.spread.1}",
+        "type": "number"
+      },
+      "blur-2": {
+        "value": "{shadow.blur.6}",
+        "type": "number"
+      },
+      "spread-2": {
+        "value": "{shadow.spread.0}",
         "type": "number"
       }
     }
