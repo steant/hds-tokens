@@ -280,6 +280,10 @@
       "header": {
         "value": "#00000014",
         "type": "color"
+      },
+      "search": {
+        "value": "#00000014",
+        "type": "color"
       }
     },
     "border": {
