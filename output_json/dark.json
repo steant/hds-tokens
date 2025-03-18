@@ -99,6 +99,14 @@
         "active": {
           "value": "{global-color.neutral.400}",
           "type": "color"
+        },
+        "raised-hover": {
+          "value": "{global-color.neutral.500}",
+          "type": "color"
+        },
+        "raised-active": {
+          "value": "{global-color.neutral.500}",
+          "type": "color"
         }
       },
       "fill": {
@@ -284,6 +292,10 @@
       "search": {
         "value": "#ffffff",
         "type": "color"
+      },
+      "sm": {
+        "value": "#ffffff",
+        "type": "color"
       }
     },
     "border": {
@@ -326,6 +338,28 @@
       "table": {
         "value": "#c59f9f",
         "type": "color"
+      },
+      "action": {
+        "default": {
+          "value": "#ffffff",
+          "type": "color"
+        },
+        "bold": {
+          "value": "#ffffff",
+          "type": "color"
+        },
+        "hover": {
+          "value": "#ffffff",
+          "type": "color"
+        },
+        "pressed": {
+          "value": "#ffffff",
+          "type": "color"
+        },
+        "light": {
+          "value": "#ffffff",
+          "type": "color"
+        }
       }
     },
     "icon": {

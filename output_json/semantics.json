@@ -533,6 +533,20 @@
         "value": "{shadow.blur.1}",
         "type": "number"
       }
+    },
+    "sm": {
+      "position": {
+        "value": "{shadow.y.1}",
+        "type": "number"
+      },
+      "blur": {
+        "value": "{shadow.blur.2}",
+        "type": "number"
+      },
+      "spread": {
+        "value": "{shadow.spread.0}",
+        "type": "number"
+      }
     }
   }
 }
