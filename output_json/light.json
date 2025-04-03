@@ -262,6 +262,10 @@
           "value": "{global-color.primary.100}",
           "type": "color"
         }
+      },
+      "blanket": {
+        "value": "#171b1c26",
+        "type": "color"
       }
     },
     "shadow": {

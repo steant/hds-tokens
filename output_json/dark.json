@@ -262,6 +262,10 @@
           "value": "{global-color.neutral.400}",
           "type": "color"
         }
+      },
+      "blanket": {
+        "value": "{global-color.base.1000}",
+        "type": "color"
       }
     },
     "shadow": {

@@ -197,6 +197,10 @@
     "table-cell-xs": {
       "value": "{spacing.50}",
       "type": "number"
+    },
+    "dropdown": {
+      "value": "{spacing.50}",
+      "type": "number"
     }
   },
   "hds-gap": {
@@ -316,6 +320,10 @@
       "lg": {
         "value": "{stroke.2}",
         "type": "number"
+      },
+      "xs": {
+        "value": "{stroke.05}",
+        "type": "number"
       }
     }
   },
@@ -392,6 +400,24 @@
       "input-xs": {
         "value": 92,
         "type": "number"
+      },
+      "modal": {
+        "sm": {
+          "value": 400,
+          "type": "number"
+        },
+        "md": {
+          "value": 600,
+          "type": "number"
+        },
+        "lg": {
+          "value": 800,
+          "type": "number"
+        },
+        "xl": {
+          "value": 960,
+          "type": "number"
+        }
       }
     },
     "xl": {

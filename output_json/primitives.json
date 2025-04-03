@@ -227,6 +227,10 @@
     "2": {
       "value": 2,
       "type": "number"
+    },
+    "05": {
+      "value": 0.5,
+      "type": "number"
     }
   },
   "radius": {
