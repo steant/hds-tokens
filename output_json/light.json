@@ -273,10 +273,6 @@
         "value": "{global-color.base.1000}",
         "type": "color"
       },
-      "action": {
-        "value": "{global-color.neutral.500}",
-        "type": "color"
-      },
       "input": {
         "value": "#0000000d",
         "type": "color"
@@ -303,46 +299,6 @@
       }
     },
     "border": {
-      "action-light-default": {
-        "value": "{global-color.neutral.500}",
-        "type": "color"
-      },
-      "action-bold": {
-        "value": "{global-color.neutral.700}",
-        "type": "color"
-      },
-      "brand": {
-        "value": "{global-color.primary.500}",
-        "type": "color"
-      },
-      "action-light-hover": {
-        "value": "{global-color.neutral.600}",
-        "type": "color"
-      },
-      "action-light-pressed": {
-        "value": "{global-color.neutral.800}",
-        "type": "color"
-      },
-      "danger": {
-        "value": "{global-color.red.600}",
-        "type": "color"
-      },
-      "layout-default": {
-        "value": "#ffffff",
-        "type": "color"
-      },
-      "layout-subtle": {
-        "value": "#4b2e2e",
-        "type": "color"
-      },
-      "passive": {
-        "value": "{global-color.neutral.300}",
-        "type": "color"
-      },
-      "table": {
-        "value": "{global-color.neutral.300}",
-        "type": "color"
-      },
       "action": {
         "default": {
           "value": "{global-color.neutral.500}",
@@ -364,6 +320,30 @@
           "value": "{global-color.neutral.400}",
           "type": "color"
         }
+      },
+      "brand": {
+        "value": "{global-color.primary.500}",
+        "type": "color"
+      },
+      "danger": {
+        "value": "{global-color.red.600}",
+        "type": "color"
+      },
+      "layout-default": {
+        "value": "#ffffff",
+        "type": "color"
+      },
+      "layout-subtle": {
+        "value": "#4b2e2e",
+        "type": "color"
+      },
+      "passive": {
+        "value": "{global-color.neutral.300}",
+        "type": "color"
+      },
+      "table": {
+        "value": "{global-color.neutral.300}",
+        "type": "color"
       }
     },
     "icon": {

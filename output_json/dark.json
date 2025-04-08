@@ -273,10 +273,6 @@
         "value": "#ffffff",
         "type": "color"
       },
-      "action": {
-        "value": "#ffffff",
-        "type": "color"
-      },
       "input": {
         "value": "#ffffff",
         "type": "color"
@@ -303,23 +299,29 @@
       }
     },
     "border": {
-      "action-light-default": {
-        "value": "#ffffff",
-        "type": "color"
-      },
-      "action-bold": {
-        "value": "#ffffff",
-        "type": "color"
+      "action": {
+        "default": {
+          "value": "#ffffff",
+          "type": "color"
+        },
+        "bold": {
+          "value": "#ffffff",
+          "type": "color"
+        },
+        "hover": {
+          "value": "#ffffff",
+          "type": "color"
+        },
+        "pressed": {
+          "value": "#ffffff",
+          "type": "color"
+        },
+        "light": {
+          "value": "#ffffff",
+          "type": "color"
+        }
       },
       "brand": {
-        "value": "#ffffff",
-        "type": "color"
-      },
-      "action-light-hover": {
-        "value": "#ffffff",
-        "type": "color"
-      },
-      "action-light-pressed": {
         "value": "#ffffff",
         "type": "color"
       },
@@ -342,28 +344,6 @@
       "table": {
         "value": "#c59f9f",
         "type": "color"
-      },
-      "action": {
-        "default": {
-          "value": "#ffffff",
-          "type": "color"
-        },
-        "bold": {
-          "value": "#ffffff",
-          "type": "color"
-        },
-        "hover": {
-          "value": "#ffffff",
-          "type": "color"
-        },
-        "pressed": {
-          "value": "#ffffff",
-          "type": "color"
-        },
-        "light": {
-          "value": "#ffffff",
-          "type": "color"
-        }
       }
     },
     "icon": {

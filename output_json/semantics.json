@@ -418,6 +418,10 @@
           "value": 960,
           "type": "number"
         }
+      },
+      "content-400": {
+        "value": 400,
+        "type": "number"
       }
     },
     "xl": {
@@ -447,6 +451,36 @@
     "table-head": {
       "value": "{spacing.450}",
       "type": "number"
+    },
+    "width": {
+      "popover": {
+        "sm": {
+          "value": 240,
+          "type": "number"
+        },
+        "md": {
+          "value": 320,
+          "type": "number"
+        },
+        "lg": {
+          "value": 440,
+          "type": "number"
+        }
+      },
+      "sheet": {
+        "sm": {
+          "value": 320,
+          "type": "number"
+        },
+        "md": {
+          "value": 440,
+          "type": "number"
+        },
+        "lg": {
+          "value": 612,
+          "type": "number"
+        }
+      }
     }
   },
   "hds-shadow": {
