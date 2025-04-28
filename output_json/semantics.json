@@ -441,7 +441,7 @@
       "type": "number"
     },
     "min-table-cell": {
-      "value": "{spacing.600}",
+      "value": "{spacing.700}",
       "type": "number"
     },
     "header": {
@@ -607,6 +607,98 @@
       },
       "spread": {
         "value": "{shadow.spread.0}",
+        "type": "number"
+      }
+    },
+    "sheet": {
+      "position": {
+        "value": "{shadow.y.0}",
+        "type": "number"
+      },
+      "blur": {
+        "value": "{shadow.blur.0}",
+        "type": "number"
+      },
+      "spread": {
+        "value": "{shadow.spread.3}",
+        "type": "number"
+      }
+    },
+    "popover": {
+      "position-1": {
+        "value": "{shadow.y.0}",
+        "type": "number"
+      },
+      "blur-1": {
+        "value": "{shadow.blur.4}",
+        "type": "number"
+      },
+      "spread-1": {
+        "value": "{shadow.spread.-2}",
+        "type": "number"
+      },
+      "position-2": {
+        "value": "{shadow.y.9}",
+        "type": "number"
+      },
+      "blur-2": {
+        "value": "{shadow.blur.16}",
+        "type": "number"
+      },
+      "spread-2": {
+        "value": "{shadow.spread.-5}",
+        "type": "number"
+      }
+    },
+    "md": {
+      "position-1": {
+        "value": "{shadow.y.1}",
+        "type": "number"
+      },
+      "blur-1": {
+        "value": "{shadow.blur.2}",
+        "type": "number"
+      },
+      "spread-1": {
+        "value": "{shadow.spread.0}",
+        "type": "number"
+      },
+      "position-2": {
+        "value": "{shadow.y.9}",
+        "type": "number"
+      },
+      "blur-2": {
+        "value": "{shadow.blur.16}",
+        "type": "number"
+      },
+      "spread-2": {
+        "value": "{shadow.spread.-2}",
+        "type": "number"
+      }
+    },
+    "dropdown": {
+      "position-1": {
+        "value": "{shadow.y.0}",
+        "type": "number"
+      },
+      "blur-1": {
+        "value": "{shadow.blur.4}",
+        "type": "number"
+      },
+      "spread-1": {
+        "value": "{shadow.spread.-2}",
+        "type": "number"
+      },
+      "position-2": {
+        "value": "{shadow.y.9}",
+        "type": "number"
+      },
+      "blur-2": {
+        "value": "{shadow.blur.16}",
+        "type": "number"
+      },
+      "spread-2": {
+        "value": "{shadow.spread.-5}",
         "type": "number"
       }
     }

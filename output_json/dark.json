@@ -296,6 +296,34 @@
       "sm": {
         "value": "#ffffff",
         "type": "color"
+      },
+      "sheet": {
+        "value": "#ffffff",
+        "type": "color"
+      },
+      "popover-1": {
+        "value": "#ffffff",
+        "type": "color"
+      },
+      "popover-2": {
+        "value": "#ffffff",
+        "type": "color"
+      },
+      "md-1": {
+        "value": "#ffffff",
+        "type": "color"
+      },
+      "md-2": {
+        "value": "#ffffff",
+        "type": "color"
+      },
+      "dropdown-1": {
+        "value": "#ffffff",
+        "type": "color"
+      },
+      "dropdown-2": {
+        "value": "#ffffff",
+        "type": "color"
       }
     },
     "border": {
