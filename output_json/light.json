@@ -218,6 +218,10 @@
           "default": {
             "value": "{global-color.purple.50}",
             "type": "color"
+          },
+          "inverse": {
+            "value": "{global-color.purple.600}",
+            "type": "color"
           }
         },
         "hover": {
