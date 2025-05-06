@@ -328,6 +328,10 @@
       "dropdown-2": {
         "value": "#00000024",
         "type": "color"
+      },
+      "table-error": {
+        "value": "{global-color.red.500}",
+        "type": "color"
       }
     },
     "border": {

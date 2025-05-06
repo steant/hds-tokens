@@ -510,6 +510,10 @@
       "0": {
         "value": 0,
         "type": "number"
+      },
+      "2": {
+        "value": 2,
+        "type": "number"
       }
     }
   }
