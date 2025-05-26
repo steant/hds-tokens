@@ -380,6 +380,10 @@
       "table": {
         "value": "#c59f9f",
         "type": "color"
+      },
+      "strong": {
+        "value": "#ffffff",
+        "type": "color"
       }
     },
     "icon": {

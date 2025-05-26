@@ -380,6 +380,10 @@
       "table": {
         "value": "{global-color.neutral.300}",
         "type": "color"
+      },
+      "strong": {
+        "value": "{global-color.base.1000}",
+        "type": "color"
       }
     },
     "icon": {
