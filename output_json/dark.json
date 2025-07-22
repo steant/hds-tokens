@@ -431,6 +431,66 @@
         "value": "{global-color.primary.300}",
         "type": "color"
       }
+    },
+    "chart": {
+      "blue": {
+        "value": "#ffffff",
+        "type": "color"
+      },
+      "orange": {
+        "value": "#ffffff",
+        "type": "color"
+      },
+      "green": {
+        "value": "#ffffff",
+        "type": "color"
+      },
+      "pink": {
+        "value": "#ffffff",
+        "type": "color"
+      },
+      "gradient": {
+        "blue": {
+          "start": {
+            "value": "#ffffff",
+            "type": "color"
+          },
+          "end": {
+            "value": "#ffffff",
+            "type": "color"
+          }
+        },
+        "orange": {
+          "start": {
+            "value": "#ffffff",
+            "type": "color"
+          },
+          "end": {
+            "value": "#ffffff",
+            "type": "color"
+          }
+        },
+        "green": {
+          "start": {
+            "value": "#ffffff",
+            "type": "color"
+          },
+          "end": {
+            "value": "#ffffff",
+            "type": "color"
+          }
+        },
+        "pink": {
+          "start": {
+            "value": "#ffffff",
+            "type": "color"
+          },
+          "end": {
+            "value": "#ffffff",
+            "type": "color"
+          }
+        }
+      }
     }
   }
 }

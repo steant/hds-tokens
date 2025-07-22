@@ -217,6 +217,12 @@
         "value": "#250d68",
         "type": "color"
       }
+    },
+    "pink": {
+      "500": {
+        "value": "#e843b1",
+        "type": "color"
+      }
     }
   },
   "stroke": {

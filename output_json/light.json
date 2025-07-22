@@ -431,6 +431,66 @@
         "value": "{global-color.purple.600}",
         "type": "color"
       }
+    },
+    "chart": {
+      "blue": {
+        "value": "#0482e9",
+        "type": "color"
+      },
+      "orange": {
+        "value": "#ea620e",
+        "type": "color"
+      },
+      "green": {
+        "value": "#0fd77c",
+        "type": "color"
+      },
+      "pink": {
+        "value": "#e843b1",
+        "type": "color"
+      },
+      "gradient": {
+        "blue": {
+          "start": {
+            "value": "#0482e9",
+            "type": "color"
+          },
+          "end": {
+            "value": "#0482e900",
+            "type": "color"
+          }
+        },
+        "orange": {
+          "start": {
+            "value": "#ea620e",
+            "type": "color"
+          },
+          "end": {
+            "value": "#ea620e00",
+            "type": "color"
+          }
+        },
+        "green": {
+          "start": {
+            "value": "#0ad67a",
+            "type": "color"
+          },
+          "end": {
+            "value": "#0ad67a00",
+            "type": "color"
+          }
+        },
+        "pink": {
+          "start": {
+            "value": "#e843b1",
+            "type": "color"
+          },
+          "end": {
+            "value": "#e843b100",
+            "type": "color"
+          }
+        }
+      }
     }
   }
 }
