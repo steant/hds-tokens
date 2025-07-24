@@ -422,6 +422,10 @@
       "content-400": {
         "value": 400,
         "type": "number"
+      },
+      "input-lg": {
+        "value": 384,
+        "type": "number"
       }
     },
     "xl": {
@@ -480,6 +484,12 @@
           "value": 612,
           "type": "number"
         }
+      }
+    },
+    "min-width": {
+      "120": {
+        "value": 120,
+        "type": "number"
       }
     }
   },
