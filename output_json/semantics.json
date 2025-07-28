@@ -426,6 +426,10 @@
       "input-lg": {
         "value": 384,
         "type": "number"
+      },
+      "datepicker-manage": {
+        "value": 312,
+        "type": "number"
       }
     },
     "xl": {
