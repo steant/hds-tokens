@@ -270,6 +270,10 @@
       "blanket": {
         "value": "{global-color.base.1000}",
         "type": "color"
+      },
+      "default-light": {
+        "value": "{global-color.base.1000}",
+        "type": "color"
       }
     },
     "shadow": {

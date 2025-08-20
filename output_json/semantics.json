@@ -430,6 +430,10 @@
       "datepicker-manage": {
         "value": 312,
         "type": "number"
+      },
+      "content-180": {
+        "value": 180,
+        "type": "number"
       }
     },
     "xl": {
