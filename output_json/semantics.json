@@ -492,6 +492,10 @@
           "value": 612,
           "type": "number"
         }
+      },
+      "sidebar-navigation": {
+        "value": 184,
+        "type": "number"
       }
     },
     "min-width": {
@@ -499,6 +503,22 @@
         "value": 120,
         "type": "number"
       }
+    },
+    "content-144": {
+      "value": 144,
+      "type": "number"
+    },
+    "content-192": {
+      "value": 192,
+      "type": "number"
+    },
+    "content-224": {
+      "value": 224,
+      "type": "number"
+    },
+    "content-256": {
+      "value": 256,
+      "type": "number"
     }
   },
   "hds-shadow": {
