@@ -388,6 +388,10 @@
       "strong": {
         "value": "#ffffff",
         "type": "color"
+      },
+      "info": {
+        "value": "#ffffff",
+        "type": "color"
       }
     },
     "icon": {
@@ -432,6 +436,10 @@
         "type": "color"
       },
       "in-progress": {
+        "value": "{global-color.primary.300}",
+        "type": "color"
+      },
+      "override": {
         "value": "{global-color.primary.300}",
         "type": "color"
       }
