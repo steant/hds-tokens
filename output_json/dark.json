@@ -392,6 +392,34 @@
       "info": {
         "value": "#ffffff",
         "type": "color"
+      },
+      "danger-subtle": {
+        "value": "#ffffff",
+        "type": "color"
+      },
+      "brand-subtle": {
+        "value": "#ffffff",
+        "type": "color"
+      },
+      "info-subtle": {
+        "value": "#ffffff",
+        "type": "color"
+      },
+      "progress": {
+        "value": "#ffffff",
+        "type": "color"
+      },
+      "progress-subtle": {
+        "value": "#ffffff",
+        "type": "color"
+      },
+      "warning": {
+        "value": "#ffffff",
+        "type": "color"
+      },
+      "warning-subtle": {
+        "value": "#ffffff",
+        "type": "color"
       }
     },
     "icon": {
