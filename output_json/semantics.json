@@ -201,6 +201,10 @@
     "dropdown": {
       "value": "{spacing.50}",
       "type": "number"
+    },
+    "4xl": {
+      "value": "{spacing.500}",
+      "type": "number"
     }
   },
   "hds-gap": {
@@ -506,6 +510,10 @@
       "120": {
         "value": 120,
         "type": "number"
+      },
+      "table": {
+        "value": 84,
+        "type": "number"
       }
     },
     "content-144": {
@@ -530,6 +538,26 @@
     },
     "content-80": {
       "value": 80,
+      "type": "number"
+    },
+    "table-cell-height": {
+      "value": "{spacing.700}",
+      "type": "number"
+    },
+    "table-head-height": {
+      "value": "{spacing.500}",
+      "type": "number"
+    },
+    "avatar-lg": {
+      "value": "{spacing.500}",
+      "type": "number"
+    },
+    "avatar-md": {
+      "value": "{spacing.400}",
+      "type": "number"
+    },
+    "avatar-sm": {
+      "value": "{spacing.300}",
       "type": "number"
     }
   },
