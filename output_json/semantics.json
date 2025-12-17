@@ -279,6 +279,10 @@
     "info-vertical": {
       "value": "{spacing.200}",
       "type": "number"
+    },
+    "choice-item-picker-regular": {
+      "value": "{spacing.100}",
+      "type": "number"
     }
   },
   "hds-border": {
@@ -437,6 +441,10 @@
       },
       "content-180": {
         "value": 180,
+        "type": "number"
+      },
+      "content-648": {
+        "value": 648,
         "type": "number"
       }
     },

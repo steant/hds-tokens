@@ -420,6 +420,24 @@
       "warning-subtle": {
         "value": "{global-color.orange.100}",
         "type": "color"
+      },
+      "radial-gauge": {
+        "critical": {
+          "value": "{global-color.red.500}",
+          "type": "color"
+        },
+        "poor": {
+          "value": "{global-color.orange.500}",
+          "type": "color"
+        },
+        "good": {
+          "value": "{global-color.blue.500}",
+          "type": "color"
+        },
+        "excellent": {
+          "value": "{global-color.primary.500}",
+          "type": "color"
+        }
       }
     },
     "icon": {
