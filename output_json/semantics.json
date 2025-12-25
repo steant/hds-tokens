@@ -205,6 +205,14 @@
     "4xl": {
       "value": "{spacing.500}",
       "type": "number"
+    },
+    "table-cell-hug": {
+      "value": "{spacing.300}",
+      "type": "number"
+    },
+    "table-cell-hug-fchild": {
+      "value": "{spacing.200}",
+      "type": "number"
     }
   },
   "hds-gap": {
@@ -521,6 +529,10 @@
       },
       "table": {
         "value": 84,
+        "type": "number"
+      },
+      "table-column": {
+        "value": 128,
         "type": "number"
       }
     },
