@@ -274,6 +274,10 @@
       "default-light": {
         "value": "{global-color.neutral.100}",
         "type": "color"
+      },
+      "campaign-editor": {
+        "value": "{global-color.neutral.200}",
+        "type": "color"
       }
     },
     "shadow": {
