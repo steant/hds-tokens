@@ -340,6 +340,18 @@
       "table-error": {
         "value": "#ffffff",
         "type": "color"
+      },
+      "card-1": {
+        "value": "#ffffff",
+        "type": "color"
+      },
+      "card-2": {
+        "value": "#ffffff",
+        "type": "color"
+      },
+      "dynamic-tag": {
+        "value": "#ffffff",
+        "type": "color"
       }
     },
     "border": {
@@ -490,6 +502,10 @@
         "type": "color"
       },
       "override": {
+        "value": "{global-color.primary.300}",
+        "type": "color"
+      },
+      "info-bold": {
         "value": "{global-color.primary.300}",
         "type": "color"
       }

@@ -510,6 +510,14 @@
       "-5": {
         "value": -5,
         "type": "number"
+      },
+      "-1": {
+        "value": -1,
+        "type": "number"
+      },
+      "05": {
+        "value": 0.5,
+        "type": "number"
       }
     },
     "x": {
