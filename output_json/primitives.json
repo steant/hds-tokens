@@ -284,7 +284,12 @@
     },
     "100": {
       "value": 8,
-      "type": "number"
+      "type": "number",
+      "$extensions": {
+        "com.figma.codeSyntax": {
+          "Web": "var(--hds-spacing-100)"
+        }
+      }
     },
     "150": {
       "value": 12,
@@ -337,6 +342,10 @@
   },
   "font": {
     "size": {
+      "8": {
+        "value": 8,
+        "type": "number"
+      },
       "11": {
         "value": 11,
         "type": "number"
