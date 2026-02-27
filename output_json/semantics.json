@@ -1150,6 +1150,15 @@
             "ALL_SCOPES"
           ]
         }
+      },
+      "overview-detail-item": {
+        "value": 120,
+        "type": "number",
+        "$extensions": {
+          "com.figma.scopes": [
+            "ALL_SCOPES"
+          ]
+        }
       }
     },
     "min-width": {
@@ -1341,7 +1350,7 @@
           }
         },
         "side": {
-          "value": 300,
+          "value": 348,
           "type": "number",
           "$extensions": {
             "com.figma.scopes": [
